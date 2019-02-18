@@ -31,5 +31,9 @@ namespace EatBrussels.Models
             return new ApplicationDbContext();
         }
         public DbSet<Restaurant> Restaurants { get; set; }
+
+        public DbSet<Kitchen> Kitchens { get; set; }
+
+        public DbSet<KitchenType> KitchenTypes { get; set; }
     }
 }
