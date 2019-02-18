@@ -12,5 +12,6 @@ namespace EatBrussels.Models
         public int RestaurantID { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
+        public virtual ICollection<Kitchen> Kitchens { get; set; }
     }
 }
