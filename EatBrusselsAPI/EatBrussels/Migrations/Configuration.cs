@@ -11,15 +11,15 @@ namespace EatBrussels.Migrations
     {
         public Configuration()
         {
-            AutomaticMigrationsEnabled = false;
+            AutomaticMigrationsEnabled = true;
             ContextKey = "EatBrussels.Models.ApplicationDbContext";
         }
 
-        protected override void Seed(EatBrussels.Models.ApplicationDbContext context)
+        protected override void Seed(ApplicationDbContext context)
         {
-            context.Roles.Add(new IdentityRole("Administrator"));
-            context.Roles.Add(new IdentityRole("Restaurateur"));
-            context.Roles.Add(new IdentityRole("Client"));
+            //context.Roles.AddOrUpdate(new IdentityRole("Administrator"));
+            //context.Roles.AddOrUpdate(new IdentityRole("Restaurateur"));
+            //context.Roles.AddOrUpdate(new IdentityRole("Client"));
 
             context.Users.AddOrUpdate(new ApplicationUser()
             {
