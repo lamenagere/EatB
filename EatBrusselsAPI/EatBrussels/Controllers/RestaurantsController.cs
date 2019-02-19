@@ -29,7 +29,7 @@ namespace EatBrussels.Controllers
                                             description = "",
                                             openingHours = r.OpeningHour,
                                             closingHours = r.ClosingHour
-                                        }).ToListAsync();
+                                        }).Distinct().ToListAsync();
 
             return Ok(restaurantModels);
         }
@@ -40,7 +40,7 @@ namespace EatBrussels.Controllers
         {
             //Restaurant restaurant = await db.Restaurants.FindAsync(id);
 
-            var restaurantModel = from r in db.Restaurants.AsParallel()
+            var restaurantModel = (from r in db.Restaurants.AsParallel()
                                    join kit in db.Kitchens.AsParallel() on r.RestaurantID equals kit.RestaurantID
                                    join kt in db.KitchenTypes.AsParallel() on kit.KitchenTypeID equals kt.KitchenTypeID
                                    where r.RestaurantID == id
@@ -53,7 +53,7 @@ namespace EatBrussels.Controllers
                                        description = "",
                                        openingHours = r.OpeningHour,
                                        closingHours = r.ClosingHour
-                                   };
+                                   }).FirstOrDefault();
 
 
             if (restaurantModel == null)
