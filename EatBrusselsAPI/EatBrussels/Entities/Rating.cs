@@ -4,14 +4,13 @@ using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
-namespace EatBrussels.Models
+namespace EatBrussels.Entities
 {
-    public class Kitchen
+    public class Rating
     {
         [Key]
-        public int KitchenID { get; set; }
+        public int RatingID { get; set; }
+        public int UserID { get; set; }
         public int RestaurantID { get; set; }
-        
-
     }
 }

@@ -1,13 +1,13 @@
 namespace EatBrussels.Migrations
 {
-    using EatBrussels.Models;
+    using EatBrussels.Entities;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
     using System.Data.Entity;
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<EatBrussels.Models.ApplicationDbContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<EatBrussels.Entities.ApplicationDbContext>
     {
         public Configuration()
         {

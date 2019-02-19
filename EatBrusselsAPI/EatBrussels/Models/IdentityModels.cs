@@ -5,7 +5,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.AspNet.Identity.Owin;
 
-namespace EatBrussels.Models
+namespace EatBrussels.Entities
 {
     // Vous pouvez ajouter des données de profil pour l'utilisateur en ajoutant d'autres propriétés à votre classe ApplicationUser. Pour en savoir plus, consultez https://go.microsoft.com/fwlink/?LinkID=317594.
     public class ApplicationUser : IdentityUser
@@ -35,5 +35,9 @@ namespace EatBrussels.Models
         public DbSet<Kitchen> Kitchens { get; set; }
 
         public DbSet<KitchenType> KitchenTypes { get; set; }
+
+        public DbSet<Comment> Comments { get; set; }
+
+        public DbSet<Rating> Ratings { get; set; }
     }
 }

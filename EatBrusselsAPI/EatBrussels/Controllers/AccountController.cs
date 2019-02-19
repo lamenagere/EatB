@@ -13,7 +13,7 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Microsoft.Owin.Security.Cookies;
 using Microsoft.Owin.Security.OAuth;
-using EatBrussels.Models;
+using EatBrussels.Entities;
 using EatBrussels.Providers;
 using EatBrussels.Results;
 

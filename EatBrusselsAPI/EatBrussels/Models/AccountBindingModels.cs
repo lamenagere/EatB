@@ -2,7 +2,7 @@
 using System.ComponentModel.DataAnnotations;
 using Newtonsoft.Json;
 
-namespace EatBrussels.Models
+namespace EatBrussels.Entities
 {
     // Modèles utilisés comme paramètres des actions AccountController.
 

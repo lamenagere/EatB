@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace EatBrussels.Models
+namespace EatBrussels.Entities
 {
     // Modèles retournés par les actions AccountController.
 
