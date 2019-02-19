@@ -226,10 +226,12 @@
     <Compile Include="Controllers\RestaurantsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Entities\Comment.cs" />
+    <Compile Include="Entities\Image.cs" />
     <Compile Include="Entities\Kitchen.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
+    <Compile Include="Mapper\Mapper.cs" />
     <Compile Include="Migrations\201902181242387_InitialCreate.cs" />
     <Compile Include="Migrations\201902181242387_InitialCreate.Designer.cs">
       <DependentUpon>201902181242387_InitialCreate.cs</DependentUpon>
