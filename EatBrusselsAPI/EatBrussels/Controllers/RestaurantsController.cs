@@ -8,6 +8,7 @@ using System.Threading.Tasks;
 using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
+using EatBrussels.Mapper;
 
 namespace EatBrussels.Controllers
 {
@@ -22,6 +23,7 @@ namespace EatBrussels.Controllers
             var restaurantModels = await(from r in db.Restaurants
                                         join kit in db.Kitchens on r.RestaurantID equals kit.RestaurantID
                                         join kt in db.KitchenTypes on kit.KitchenTypeID equals kt.KitchenTypeID
+                                        join img in db.Images on r.RestaurantID equals img.RestaurantID
                                         select new RestaurantModel
                                         {
                                             restaurantID = r.RestaurantID,
@@ -29,8 +31,9 @@ namespace EatBrussels.Controllers
                                             address = r.Address,
                                             kitchenType = kt.KitchenLabel,
                                             description = "",
-                                            openingHours = r.OpeningHour,
-                                            closingHours = r.ClosingHour
+                                            openingHour = r.OpeningHour,
+                                            closingHour = r.ClosingHour,
+                                            imageUrl = img.ImageUrl
                                         }).Distinct().ToListAsync();
 
             return Ok(restaurantModels);
@@ -40,11 +43,10 @@ namespace EatBrussels.Controllers
         [ResponseType(typeof(Restaurant))]
         public IHttpActionResult GetRestaurant(int id)
         {
-            //Restaurant restaurant = await db.Restaurants.FindAsync(id);
-
             var restaurantModel = (from r in db.Restaurants.AsParallel()
                                    join kit in db.Kitchens.AsParallel() on r.RestaurantID equals kit.RestaurantID
                                    join kt in db.KitchenTypes.AsParallel() on kit.KitchenTypeID equals kt.KitchenTypeID
+                                   join img in db.Images.AsParallel() on r.RestaurantID equals img.RestaurantID
                                    where r.RestaurantID == id
                                    select new RestaurantModel
                                    {
@@ -53,8 +55,9 @@ namespace EatBrussels.Controllers
                                        address = r.Address,
                                        kitchenType = kt.KitchenLabel,
                                        description = "",
-                                       openingHours = r.OpeningHour,
-                                       closingHours = r.ClosingHour
+                                       openingHour = r.OpeningHour,
+                                       closingHour = r.ClosingHour,
+                                       imageUrl = img.ImageUrl
                                    }).FirstOrDefault();
 
 
@@ -72,6 +75,7 @@ namespace EatBrussels.Controllers
             var restaurantModels = await (from r in db.Restaurants
                                           join k in db.Kitchens on r.RestaurantID equals k.RestaurantID
                                           join kt in db.KitchenTypes on k.KitchenTypeID equals kt.KitchenTypeID
+                                          join img in db.Images on r.RestaurantID equals img.RestaurantID
                                           where kt.KitchenLabel == kitchenType
                                           select new RestaurantModel
                                           {
@@ -80,8 +84,9 @@ namespace EatBrussels.Controllers
                                               address = r.Address,
                                               kitchenType = kt.KitchenLabel,
                                               description = "",
-                                              openingHours = r.OpeningHour,
-                                              closingHours = r.ClosingHour
+                                              openingHour = r.OpeningHour,
+                                              closingHour = r.ClosingHour,
+                                              imageUrl = img.ImageUrl
                                           }).Distinct().ToListAsync();
 
             if (restaurantModels == null)
@@ -129,17 +134,17 @@ namespace EatBrussels.Controllers
 
         // POST: api/Restaurants
         [ResponseType(typeof(Restaurant))]
-        public async Task<IHttpActionResult> PostRestaurant(Restaurant restaurant)
+        public async Task<IHttpActionResult> PostRestaurant(RestaurantModel restaurant)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Restaurants.Add(restaurant);
+            var newRestaurant = db.Restaurants.Add(restaurant.ConvertModelToRestaurant());
             await db.SaveChangesAsync();
 
-            return CreatedAtRoute("DefaultApi", new { id = restaurant.RestaurantID }, restaurant);
+            return CreatedAtRoute("DefaultApi", new { id = newRestaurant.RestaurantID }, newRestaurant);
         }
 
         // DELETE: api/Restaurants/5

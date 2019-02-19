@@ -39,5 +39,7 @@ namespace EatBrussels.Entities
         public DbSet<Comment> Comments { get; set; }
 
         public DbSet<Rating> Ratings { get; set; }
+
+        public DbSet<Image> Images { get; set; }
     }
 }
