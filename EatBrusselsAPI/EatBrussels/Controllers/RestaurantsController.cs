@@ -64,6 +64,32 @@ namespace EatBrussels.Controllers
             return Ok(restaurantModel);
         }
 
+        // GET: api/Restaurants/
+        public async Task<IHttpActionResult> GetRestaurants(string kitchenType)
+        {
+            var restaurantModels = await (from r in db.Restaurants
+                                          join k in db.Kitchens on r.RestaurantID equals k.RestaurantID
+                                          join kt in db.KitchenTypes on k.KitchenTypeID equals kt.KitchenTypeID
+                                          where kt.KitchenLabel == kitchenType
+                                          select new RestaurantModel
+                                          {
+                                              restaurantID = r.RestaurantID,
+                                              name = r.Name,
+                                              address = r.Address,
+                                              kitchenType = kt.KitchenLabel,
+                                              description = "",
+                                              openingHours = r.OpeningHour,
+                                              closingHours = r.ClosingHour
+                                          }).Distinct().ToListAsync();
+
+            if (restaurantModels == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(restaurantModels);
+        }
+
         // PUT: api/Restaurants/5
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutRestaurant(int id, Restaurant restaurant)
