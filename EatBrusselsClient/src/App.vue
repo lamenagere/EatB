@@ -28,8 +28,6 @@ export default {
 @import url('https://use.fontawesome.com/releases/v5.7.2/css/all.css');
 @import url('~@/assets/style.min.css');
 #app {
-  text-align: center;
-  font-family: 'Open Sans', sans-serif;
   margin: 0;
 }
 body{

@@ -25,9 +25,9 @@
                     <div class="plat_container">
                         <!-- DEBUT LISTE PLATS -->
                         <div class="plat">
-                                <h5>tomates séchées</h5>
-                                <p>description</p>
-                                <p>Prix</p>
+                            <p class="price">10,50€</p>
+                            <h5>tomates séchées</h5>
+                            <p>description du plat, courte et limitée. Pas plus de deux lignes blablablablz peut-être un peu plus on </p>
                         </div>
                         <div class="plat">
                                 <h5>Nom plat</h5>
@@ -150,6 +150,7 @@ export default {
 .resto {
     margin: 0 auto;
     width: 1025px;
+    font-family: 'Open Sans';
     &__image img {
         width: 400px;
     }
@@ -181,6 +182,7 @@ export default {
     position: absolute;
     top: 0;
     right: 0;
+    text-align: center;
 }
 .plat{
     display: flex;
@@ -190,8 +192,21 @@ export default {
     text-align-last: left;
     background: white;
     padding: 5px;
+    position: relative;
     & h5, p {
         margin: 0 0 10px 0;
+    }
+    & h5 {
+        font-size: 16px;
+        text-transform: uppercase;
+        color:rgb(63, 63, 63);
+    }
+    & p {
+        color:rgb(138, 138, 138);
+    }
+    & .price {
+        position: absolute;
+        right: 10px;
     }
 }
 .plat_container {

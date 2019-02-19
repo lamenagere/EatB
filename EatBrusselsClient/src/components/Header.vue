@@ -27,6 +27,7 @@ nav {
   justify-content: space-between;
   align-items: center;
   color: white;
+  font-family: 'Open Sans'
 }
 .logo {
   font-family: "Roboto", sans-serif;
