@@ -6,10 +6,12 @@ using System.Linq;
 using System.Net;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Web.Http.Cors;
 using System.Web.Http.Description;
 
 namespace EatBrussels.Controllers
 {
+    [EnableCors(origins:"*", headers:"*", methods:"*")]
     public class RestaurantsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
