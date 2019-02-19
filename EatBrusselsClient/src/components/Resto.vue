@@ -1,13 +1,11 @@
+
 <template>
-  <div class="resto-pref">
-    <h1 class="container">Les restaurants les mieux notés</h1>
-    <div class="resto-list container">
       <div class="resto">
         <img src="@/assets/img/balmo.jpg" alt>
         <div class="info-resto">
           <div class="name-resto">
             <h3>{{name}}</h3>
-            <p>Cuisine Américaine</p>
+            <p>Cuisine {{type}}</p>
           </div>
           <span class="stars">
             <i class="fas fa-star"></i>
@@ -17,37 +15,20 @@
             <i class="fas fa-star"></i>
           </span>
         </div>
-      </div>
     </div>
-    <div class="more">
-      <button>voir plus</button>
-    </div>
-  </div>
+
 </template>
 
 <script>
 export default {
-  props: ['name']
+  props: ['name', 'type']
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-.resto-pref {
-  background: rgb(238, 238, 238);
-  padding-bottom: 100px;
-}
-h1 {
-  font-family: "Roboto", sans-serif;
-  text-align: left;
-  margin-bottom: 40px;
-  padding-top: 70px;
-}
-.resto-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
-}
+
+
 .resto {
   width: 300px;
   text-align: left;
@@ -70,31 +51,7 @@ p {
 .stars {
   font-size: 15px;
 }
-button {
-  background: crimson;
-  padding: 10px 15px;
-  margin-top: 50px;
-  color: white;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
-}
-
-@media screen and (max-width: 1150px) {
-  .resto-pref {
-    padding-bottom: 70px;
-  }
-  h1 {
-    margin: 0;
-    padding-top: 70px;
-    padding-bottom: 50px;
-  }
-}
-
 @media screen and (max-width: 770px) {
-  h1 {
-    font-size: 1.6em;
-  }
   .resto-list {
     display: flex;
     flex-direction: column;
