@@ -160,7 +160,7 @@ export default {
         text-align: left;
         & h2 {
             margin-bottom: 0px;
-            font-size: 30px;
+            font-size: 50px;
         }
         & .tags {
             font-size: 12px;
@@ -172,6 +172,8 @@ export default {
         display: flex;
         justify-content: space-between;
         position: relative;
+        border-top: 2px rgb(218, 218, 218) solid;
+        border-bottom: 2px rgb(218, 218, 218) solid;
     }
 }
 .basket {

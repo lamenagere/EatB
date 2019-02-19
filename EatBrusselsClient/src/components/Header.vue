@@ -1,9 +1,9 @@
 <template>
   <div class="header">
     <nav class="container">
-      <a class="logo">
+      <router-link to="/" class="logo">
         <i class="fas fa-hamburger"></i> Eat.brussels
-      </a>
+      </router-link>
       <ul>
         <li>
           <a href="#" class="link-menu">Se connecter</a>
@@ -20,7 +20,7 @@
 export default {};
 </script>
 
-<style>
+<style lang="scss">
 /* nav */
 nav {
   display: flex;
@@ -32,6 +32,8 @@ nav {
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-size: 17px;
+  text-decoration: none;
+  color:white;
 }
 ul {
   display: flex;

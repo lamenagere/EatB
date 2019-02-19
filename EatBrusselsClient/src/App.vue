@@ -1,7 +1,6 @@
 <template>
   <div id="app">
     <Header/>
-    <Search/>
     <div id="nav">
       <!-- <router-link to="/">Home</router-link>| -->
       <!-- <router-link to="/about">About</router-link> -->
@@ -12,16 +11,12 @@
 </template>
 <script>
 import Header from "./components/Header.vue";
-import Search from "./components/Search.vue";
 import Footer from "./components/Footer.vue";
-import axios from "axios";
-
 export default {
   name: "app",
   components: {
     Header,
-    Footer,
-    Search
+    Footer
   },
 };
 

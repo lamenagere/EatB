@@ -19,6 +19,7 @@ export default {
 .menu {
     height: 40px;
     background-color:rgb(238, 238, 238);
+    
     width: 100%;
     display: flex;
     align-items: baseline;
@@ -27,8 +28,8 @@ export default {
         color: black;
         margin: 0 15px 0 0;
         color: coral;
-        border-bottom: 2px dotted coral;
         font: 20px bold;
+        line-height: 40px;
     }
 }
 </style>
