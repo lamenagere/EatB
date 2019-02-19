@@ -212,6 +212,7 @@
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\RestaurantsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Kitchen.cs" />
