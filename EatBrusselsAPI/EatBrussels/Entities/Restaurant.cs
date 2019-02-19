@@ -12,6 +12,9 @@ namespace EatBrussels.Entities
         public int RestaurantID { get; set; }
         public string Name { get; set; }
         public string Address { get; set; }
+        public string OpeningHour { get; set; }
+        public string ClosingHour { get; set; }
+        public string ZipCode { get; set; }
         public virtual ICollection<Kitchen> Kitchens { get; set; }
     }
 }
