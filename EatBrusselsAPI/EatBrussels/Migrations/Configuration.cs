@@ -21,6 +21,16 @@ namespace EatBrussels.Migrations
             //context.Roles.AddOrUpdate(new IdentityRole("Restaurateur"));
             //context.Roles.AddOrUpdate(new IdentityRole("Client"));
 
+            context.KitchenTypes.AddOrUpdate(
+                    new KitchenType() {  KitchenTypeID=1, KitchenLabel="Belge" },
+                    new KitchenType() { KitchenTypeID = 2, KitchenLabel = "Asiatique" },
+                    new KitchenType() { KitchenTypeID = 3, KitchenLabel = "Italienne" },
+                    new KitchenType() { KitchenTypeID = 4, KitchenLabel = "Burger" },
+                    new KitchenType() { KitchenTypeID = 5, KitchenLabel = "Nouilles" },
+                    new KitchenType() { KitchenTypeID = 6, KitchenLabel = "Française" },
+                    new KitchenType() { KitchenTypeID = 7, KitchenLabel = "Ethiopienne" });
+
+
             context.Users.AddOrUpdate(new ApplicationUser()
             {
                 Id = "1",

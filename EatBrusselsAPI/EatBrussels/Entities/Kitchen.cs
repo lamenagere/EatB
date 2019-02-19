@@ -10,8 +10,8 @@ namespace EatBrussels.Entities
     {
         [Key]
         public int KitchenID { get; set; }
-        public int RestaurantID { get; set; }
-        
 
+        public int KitchenTypeID { get; set; }
+        public int RestaurantID { get; set; }
     }
 }

@@ -1,4 +1,5 @@
 ﻿using EatBrussels.Entities;
+using EatBrussels.Models;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
@@ -14,22 +15,53 @@ namespace EatBrussels.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Restaurants
-        public IHttpActionResult GetRestaurants()
+        public async Task<IHttpActionResult> GetRestaurants()
         {
-            return Ok(db.Restaurants.ToList());
+            var restaurantModels = await(from r in db.Restaurants
+                                        join kit in db.Kitchens on r.RestaurantID equals kit.RestaurantID
+                                        join kt in db.KitchenTypes on kit.KitchenTypeID equals kt.KitchenTypeID
+                                        select new RestaurantModel
+                                        {
+                                            restaurantID = r.RestaurantID,
+                                            name = r.Name,
+                                            address = r.Address,
+                                            kitchenType = kt.KitchenLabel,
+                                            description = "",
+                                            openingHours = r.OpeningHour,
+                                            closingHours = r.ClosingHour
+                                        }).ToListAsync();
+
+            return Ok(restaurantModels);
         }
 
         // GET: api/Restaurants/5
         [ResponseType(typeof(Restaurant))]
-        public async Task<IHttpActionResult> GetRestaurant(int id)
+        public IHttpActionResult GetRestaurant(int id)
         {
-            Restaurant restaurant = await db.Restaurants.FindAsync(id);
-            if (restaurant == null)
+            //Restaurant restaurant = await db.Restaurants.FindAsync(id);
+
+            var restaurantModel = from r in db.Restaurants.AsParallel()
+                                   join kit in db.Kitchens.AsParallel() on r.RestaurantID equals kit.RestaurantID
+                                   join kt in db.KitchenTypes.AsParallel() on kit.KitchenTypeID equals kt.KitchenTypeID
+                                   where r.RestaurantID == id
+                                   select new RestaurantModel
+                                   {
+                                       restaurantID = r.RestaurantID,
+                                       name = r.Name,
+                                       address = r.Address,
+                                       kitchenType = kt.KitchenLabel,
+                                       description = "",
+                                       openingHours = r.OpeningHour,
+                                       closingHours = r.ClosingHour
+                                   };
+
+
+            if (restaurantModel == null)
             {
                 return NotFound();
             }
 
-            return Ok(restaurant);
+            return Ok(restaurantModel);
         }
 
         // PUT: api/Restaurants/5
