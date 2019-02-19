@@ -22,13 +22,34 @@ namespace EatBrussels.Migrations
             //context.Roles.AddOrUpdate(new IdentityRole("Client"));
 
             context.KitchenTypes.AddOrUpdate(
-                    new KitchenType() {  KitchenTypeID=1, KitchenLabel="Belge" },
+                    new KitchenType() { KitchenTypeID = 1, KitchenLabel="Belge" },
                     new KitchenType() { KitchenTypeID = 2, KitchenLabel = "Asiatique" },
                     new KitchenType() { KitchenTypeID = 3, KitchenLabel = "Italienne" },
                     new KitchenType() { KitchenTypeID = 4, KitchenLabel = "Burger" },
                     new KitchenType() { KitchenTypeID = 5, KitchenLabel = "Nouilles" },
                     new KitchenType() { KitchenTypeID = 6, KitchenLabel = "Française" },
-                    new KitchenType() { KitchenTypeID = 7, KitchenLabel = "Ethiopienne" });
+                    new KitchenType() { KitchenTypeID = 7, KitchenLabel = "Ethiopienne" },
+                    new KitchenType() { KitchenTypeID = 8, KitchenLabel = "Américaine" },
+                    new KitchenType() { KitchenTypeID = 9, KitchenLabel = "Européenne" },
+                    new KitchenType() { KitchenTypeID = 10, KitchenLabel = "Healthy" });
+
+            context.Kitchens.AddOrUpdate(
+                    new Kitchen() { KitchenTypeID = 1, RestaurantID = 1 },
+                    new Kitchen() { KitchenTypeID = 1, RestaurantID = 2 },
+                    new Kitchen() { KitchenTypeID = 2, RestaurantID = 3 },
+                    new Kitchen() { KitchenTypeID = 3, RestaurantID = 4 },
+                    new Kitchen() { KitchenTypeID = 4, RestaurantID = 5 },
+                    new Kitchen() { KitchenTypeID = 5, RestaurantID = 6 },
+                    new Kitchen() { KitchenTypeID = 6, RestaurantID = 7 },
+                    new Kitchen() { KitchenTypeID = 7, RestaurantID = 8 },
+                    new Kitchen() { KitchenTypeID = 8, RestaurantID = 9 },
+                    new Kitchen() { KitchenTypeID = 9, RestaurantID = 10 },
+                    new Kitchen() { KitchenTypeID = 10, RestaurantID = 11 },
+                    new Kitchen() { KitchenTypeID = 1, RestaurantID = 12 },
+                    new Kitchen() { KitchenTypeID = 5, RestaurantID = 13 },
+                    new Kitchen() { KitchenTypeID = 2, RestaurantID = 14 },
+                    new Kitchen() { KitchenTypeID = 3, RestaurantID = 15 });
+
 
 
             context.Users.AddOrUpdate(new ApplicationUser()
