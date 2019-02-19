@@ -16,11 +16,13 @@ using Microsoft.Owin.Security.OAuth;
 using EatBrussels.Entities;
 using EatBrussels.Providers;
 using EatBrussels.Results;
+using System.Web.Http.Cors;
 
 namespace EatBrussels.Controllers
 {
     [Authorize]
     [RoutePrefix("api/Account")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AccountController : ApiController
     {
         private const string LocalLoginProvider = "Local";
