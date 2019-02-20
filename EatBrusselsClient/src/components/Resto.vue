@@ -1,34 +1,39 @@
 
 <template>
-      <div class="resto">
-        <img src="@/assets/img/balmo.jpg" alt>
-        <div class="info-resto">
-          <div class="name-resto">
-            <h3>{{name}}</h3>
-            <p>Cuisine {{type}}</p>
-          </div>
-          <span class="stars">
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-            <i class="fas fa-star"></i>
-          </span>
+  <div class="resto">
+    <router-link to="/" class="filterrate">
+    <a href>
+      <img src="@/assets/img/balmo.jpg" alt>
+      <div class="info-resto">
+        <div class="name-resto">
+          <h3>{{name}}</h3>
+          <p>Cuisine {{type}}</p>
         </div>
-    </div>
-
+        <span class="stars">
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+          <i class="fas fa-star"></i>
+        </span>
+      </div>
+    </a>
+    </router-link>
+  </div>
 </template>
 
 <script>
 export default {
-  props: ['name', 'type']
+  props: ["name", "type"]
 };
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
-
-
+a{
+  text-decoration: none;
+  color: black;
+}
 .resto {
   width: 300px;
   text-align: left;
