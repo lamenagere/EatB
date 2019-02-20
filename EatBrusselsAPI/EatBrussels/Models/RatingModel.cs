@@ -9,6 +9,7 @@ namespace EatBrussels.Models
     {
         public int restaurantID { get; set; }
         public int restaurantName { get; set; }
-        public float averageRating { get; set; }
+        public int averageRating { get; set; }
+
     }
 }

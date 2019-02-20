@@ -230,12 +230,12 @@ namespace EatBrussels.Migrations
                 new Image() { RestaurantID = 10, ImageUrl = "https://cdn.filestackcontent.com/VtJfU8tjTlyDI4D8xvtR" },
                 new Image() { RestaurantID = 14, ImageUrl = "https://cdn.filestackcontent.com/rHueqHnpQ8ygJ64HgV70" });
 
-            //context.Ratings.AddOrUpdate(
-            //    new Rating() { RestaurantID = 1, UserID = 1, Rate = 3 },
-            //    new Rating() { RestaurantID = 1, UserID = 1, Rate = 1 },
-            //    new Rating() { RestaurantID = 1, UserID = 1, Rate = 4 },
-            //    new Rating() { RestaurantID = 1, UserID = 1, Rate = 5 }
-            //    );
+            context.Ratings.AddOrUpdate(
+                new Rating() { RestaurantID = 1, UserID = 1, Rate = 3 },
+                new Rating() { RestaurantID = 1, UserID = 1, Rate = 1 },
+                new Rating() { RestaurantID = 1, UserID = 1, Rate = 4 },
+                new Rating() { RestaurantID = 1, UserID = 1, Rate = 5 }
+                );
 
             context.SaveChanges();
         }

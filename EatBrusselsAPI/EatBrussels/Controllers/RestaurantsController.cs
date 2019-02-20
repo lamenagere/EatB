@@ -17,26 +17,33 @@ namespace EatBrussels.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: api/Restaurants
+        // GET: api/Restaurants    retourne tout les resto par rating décroissant
         public async Task<IHttpActionResult> GetRestaurants()
         {
-            var restaurantModels = await(from r in db.Restaurants
-                                        join kit in db.Kitchens on r.RestaurantID equals kit.RestaurantID
-                                        join kt in db.KitchenTypes on kit.KitchenTypeID equals kt.KitchenTypeID
-                                        join img in db.Images on r.RestaurantID equals img.RestaurantID
-                                        join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID
-                                        
-                                         select new RestaurantModel
-                                        {
-                                            restaurantID = r.RestaurantID,
-                                            name = r.Name,
-                                            address = r.Address,
-                                            kitchenType = kt.KitchenLabel,
-                                            description = "",
-                                            openingHour = r.OpeningHour,
-                                            closingHour = r.ClosingHour,
-                                            imageUrl = img.ImageUrl
-                                        }).Distinct().ToListAsync();
+            var restaurantModels = await (from r in db.Restaurants
+                                          join kit in db.Kitchens on r.RestaurantID equals kit.RestaurantID
+                                          join kt in db.KitchenTypes on kit.KitchenTypeID equals kt.KitchenTypeID
+                                          join img in db.Images on r.RestaurantID equals img.RestaurantID
+                                          join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID into rates
+                                          
+                                          
+                                          select new RestaurantModel
+                                          {
+                                              restaurantID = r.RestaurantID,
+                                              name = r.Name,
+                                              address = r.Address,
+                                              kitchenType = kt.KitchenLabel,
+                                              description = "",
+                                              openingHour = r.OpeningHour,
+                                              closingHour = r.ClosingHour,
+                                              imageUrl = img.ImageUrl,
+                                              averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
+                                          }).Distinct().OrderByDescending(x => x.averageRating).ToListAsync();
+
+            if (restaurantModels == null)
+            {
+                return NotFound();
+            }
 
             return Ok(restaurantModels);
         }
