@@ -1,6 +1,6 @@
 <template>
   <div class="resto-pref">
-    <h1 class="container">Les restaurants les mieux notés</h1>
+    <h1 class="container">{{title}}</h1>
     <div class="resto-list container">
       <Resto v-for="(r, index) in resto" :key="index" :resto="r"/>
     </div>
@@ -12,27 +12,11 @@
 
 <script>
 import Resto from "./Resto.vue";
-import axios from "axios";
 
 export default {
-  data() {
-    return {
-      resto: [],
-      // restotypes: [],
-    };
-  },
+  props: ['resto', 'title'],
   components: {
     Resto
-  },
-  created() {
-    axios.get("http://localhost:63980/api/restaurants").then(response => {
-      //console.log(JSON.stringify(response.data))
-      this.resto = response.data;
-    });
-    // axios.get("http://localhost:63980/api/kitchentypes").then(response => {
-    //   //console.log(JSON.stringify(response.data))
-    //   this.restotypes = response.data;
-    // });
   }
 };
 </script>

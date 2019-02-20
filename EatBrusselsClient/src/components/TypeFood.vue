@@ -3,43 +3,37 @@
     <h1>Les types de cuisine préférés</h1>
     <div class="food-type">
       <div class="type">
-        <router-link to="/routerlist" class="filtertype">
-          <a href>
+        <router-link to="/routerlist/Asiatique" class="typeAsiatique">
             <h3>Asiatique</h3>
             <div class="img-type asian"></div>
-          </a>
         </router-link>
       </div>
       <div class="type">
-        <router-link to="/" class="filtertype">
-          <a href>
+        <router-link to="/routerlist/Américaine" class="filtertype">
             <h3>Américaine</h3>
             <div class="img-type americain"></div>
-          </a>
         </router-link>
       </div>
       <div class="type">
-        <router-link to="/" class="filtertype">
-          <a href>
+        <router-link to="/routerlist/Européenne" class="filtertype">
             <h3>Européene</h3>
             <div class="img-type europeen"></div>
-          </a>
         </router-link>
       </div>
       <div class="type">
-        <router-link to="/" class="filtertype">
+        <router-link to="/routerlist/Belge" class="filtertype">
             <h3>Belge</h3>
             <div class="img-type oriental"></div>
         </router-link>
       </div>
       <div class="type">
-        <router-link to="/" class="filtertype">
+        <router-link to="/routerlist/Italienne" class="filtertype">
             <h3>Italienne</h3>
             <div class="img-type fastfood"></div>
         </router-link>
       </div>
       <div class="type">
-        <router-link to="/" class="filtertype">
+        <router-link to="/routerlist/Healthy" class="filtertype">
             <h3>Healthy</h3>
             <div class="img-type healthy"></div>
         </router-link>
@@ -49,6 +43,7 @@
 </template>
 
 <script>
+
 export default {
   name: "TypeFood",
   props: {

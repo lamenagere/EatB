@@ -33,7 +33,7 @@ export default new Router({
       component: Restos
     },
     {
-      path: '/routerlist',
+      path: '/routerlist/:kitchenType',
       name: 'routerlist',
       // route level code-splitting
       // this generates a separate chunk (about.[hash].js) for this route

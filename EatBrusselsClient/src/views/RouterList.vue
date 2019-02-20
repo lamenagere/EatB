@@ -1,16 +1,32 @@
 <template>
     <div>
-        <RestoList/>
+        <RestoList :resto="restoPerKitchenType" :title="`Le meilleur de la cuisine ${$route.params.kitchenType} à Bruxelles`"/>
     </div>
 </template>
 
 <script>
 import RestoList from "@/components/RestoList.vue";
-
+import axios from 'axios';
+//import axios
 export default {
+  data(){
+    return {
+      restoPerKitchenType: []
+    }
+  },
   components: {
     RestoList,
+  },
+  created(){
+    axios
+      .get("http://localhost:63980/api/restaurants?kitchenType=" + this.$route.params.kitchenType)
+        .then(response => {
+           this.restoPerKitchenType = response.data  
+        })
+    //appel ajax vers 'api/restaurants?kitchenType=' + this.$route.params.kitche    
+    //mettre response.data dans this.restoPerKitchenType
   }
+  
 }
 </script>
 
