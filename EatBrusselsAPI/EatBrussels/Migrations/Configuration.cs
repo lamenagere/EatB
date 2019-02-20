@@ -193,6 +193,59 @@ namespace EatBrussels.Migrations
                         OpeningHour = "11:00",
                         ClosingHour = "00:00",
                         Description = ""
+                    },
+
+
+
+                    new Restaurant()
+                    {
+                        RestaurantID = 16,
+                        Name = "Les Super Filles du Tram",
+                        Address = "Rue Lesbroussart 22, 1050 Ixelles",
+                        ZipCode = "1050",
+                        OpeningHour = "12:00",
+                        ClosingHour = "22:30",
+                        Description = ""
+                    },
+                    new Restaurant()
+                    {
+                        RestaurantID = 17,
+                        Name = "YAG",
+                        Address = "Rue Washington 59, 1050 Ixelles",
+                        ZipCode = "1050",
+                        OpeningHour = "12:00",
+                        ClosingHour = "20:00",
+                        Description = ""
+                    },
+                    new Restaurant()
+                    {
+                        RestaurantID = 18,
+                        Name = "Le fils de Jules",
+                        Address = "Rue du Page 22, 1050 Ixelles",
+                        ZipCode = "1050",
+                        OpeningHour = "18:30",
+                        ClosingHour = "23:00",
+                        Description = ""
+                    },
+                    new Restaurant()
+                    {
+                        RestaurantID = 19,
+                        Name = "La Table",
+                        Address = "Rue d'Arlon 37, 1000 Bruxelles",
+                        ZipCode = "1000",
+                        OpeningHour = "12:30",
+                        ClosingHour = "15:00",
+                        Description = ""
+                    },
+                    new Restaurant()
+                    {
+                        RestaurantID = 20,
+                        Name = "Chou",
+                        Address = "Place de Londres 4, 1050 Ixelles",
+                        ZipCode = "1050",
+                        OpeningHour = "12:00",
+                        ClosingHour = "15:00",
+                        Description = ""
                     }
                 );
 
@@ -203,32 +256,37 @@ namespace EatBrussels.Migrations
                     new Kitchen() { KitchenTypeID = 3, RestaurantID = 4 },
                     new Kitchen() { KitchenTypeID = 4, RestaurantID = 5 },
                     new Kitchen() { KitchenTypeID = 5, RestaurantID = 6 },
-                    new Kitchen() { KitchenTypeID = 6, RestaurantID = 7 },
-                    new Kitchen() { KitchenTypeID = 7, RestaurantID = 8 },
+                    new Kitchen() { KitchenTypeID = 8, RestaurantID = 7 },
+                    new Kitchen() { KitchenTypeID = 2, RestaurantID = 8 },
                     new Kitchen() { KitchenTypeID = 8, RestaurantID = 9 },
                     new Kitchen() { KitchenTypeID = 9, RestaurantID = 10 },
                     new Kitchen() { KitchenTypeID = 10, RestaurantID = 11 },
                     new Kitchen() { KitchenTypeID = 1, RestaurantID = 12 },
-                    new Kitchen() { KitchenTypeID = 5, RestaurantID = 13 },
+                    new Kitchen() { KitchenTypeID = 9, RestaurantID = 13 },
                     new Kitchen() { KitchenTypeID = 2, RestaurantID = 14 },
-                    new Kitchen() { KitchenTypeID = 3, RestaurantID = 15 });
+                    new Kitchen() { KitchenTypeID = 3, RestaurantID = 15 },
+                    new Kitchen() { KitchenTypeID = 8, RestaurantID = 16 },
+                    new Kitchen() { KitchenTypeID = 10, RestaurantID = 17 },
+                    new Kitchen() { KitchenTypeID = 10, RestaurantID = 18 },
+                    new Kitchen() { KitchenTypeID = 9, RestaurantID = 19 },
+                    new Kitchen() { KitchenTypeID = 9, RestaurantID = 20 });
 
             context.Images.AddOrUpdate(
-                new Image() { RestaurantID = 1, ImageUrl = "https://cdn.filestackcontent.com/FIIBSMXReqsJd20Cr1kL" },
-                new Image() { RestaurantID = 11, ImageUrl = "https://cdn.filestackcontent.com/X43bXCD8S068TY6t3XRk" },
-                new Image() { RestaurantID = 5, ImageUrl = "https://cdn.filestackcontent.com/uqv6XMQmTa2col9Z80Bc" },
-                new Image() { RestaurantID = 9, ImageUrl = "https://cdn.filestackcontent.com/6uE3c2OJQg0Kz0HKoCSg" },
-                new Image() { RestaurantID = 2, ImageUrl = "https://cdn.filestackcontent.com/gwKKzUQkW3x3weVHvJwq" },
-                new Image() { RestaurantID = 7, ImageUrl = "https://cdn.filestackcontent.com/P84DMK2SgGtzXQ6j2rdu" },
-                new Image() { RestaurantID = 6, ImageUrl = "https://cdn.filestackcontent.com/1okROa03SIm0UU5v5kZP" },
-                new Image() { RestaurantID = 4, ImageUrl = "https://cdn.filestackcontent.com/OHpNAkW2RKqX88PDFoJL" },
-                new Image() { RestaurantID = 12, ImageUrl = "https://cdn.filestackcontent.com/FdrpsNuPScqxZ9gM8OLn" },
-                new Image() { RestaurantID = 8, ImageUrl = "https://cdn.filestackcontent.com/b5grQsUTtqm4abFxmZwK" },
-                new Image() { RestaurantID = 15, ImageUrl = "https://cdn.filestackcontent.com/lQqxI6yNTDWGvjgEhenq" },
-                new Image() { RestaurantID = 13, ImageUrl = "https://cdn.filestackcontent.com/udnDGdCQROamLlQwbNVj" },
-                new Image() { RestaurantID = 3, ImageUrl = "https://cdn.filestackcontent.com/dt088a6hS2i1XGtCUjUp" },
-                new Image() { RestaurantID = 10, ImageUrl = "https://cdn.filestackcontent.com/VtJfU8tjTlyDI4D8xvtR" },
-                new Image() { RestaurantID = 14, ImageUrl = "https://cdn.filestackcontent.com/rHueqHnpQ8ygJ64HgV70" });
+                new Image() { RestaurantID = 1, ImageUrl = "https://i.imgur.com/Q1VbydX.jpg" },
+                new Image() { RestaurantID = 11, ImageUrl = "https://i.imgur.com/Hycue4X.jpg" },
+                new Image() { RestaurantID = 5, ImageUrl = "https://i.imgur.com/efZ4WkA.jpg" },
+                new Image() { RestaurantID = 9, ImageUrl = "https://i.imgur.com/LokPmMK.jpg" },
+                new Image() { RestaurantID = 2, ImageUrl = "https://i.imgur.com/t9ZRRUo.jpg" },
+                new Image() { RestaurantID = 7, ImageUrl = "https://i.imgur.com/VQ1NQly.jpg" },
+                new Image() { RestaurantID = 6, ImageUrl = "https://i.imgur.com/NaIa44e.jpg" },
+                new Image() { RestaurantID = 4, ImageUrl = "https://i.imgur.com/9RIf5HP.jpg" },
+                new Image() { RestaurantID = 12, ImageUrl = "https://i.imgur.com/R717Ebj.jpg" },
+                new Image() { RestaurantID = 8, ImageUrl = "https://i.imgur.com/IC817wu.jpg" },
+                new Image() { RestaurantID = 15, ImageUrl = "https://i.imgur.com/EANw0tv.jpg" },
+                new Image() { RestaurantID = 13, ImageUrl = "https://i.imgur.com/inyAhM8.jpg" },
+                new Image() { RestaurantID = 3, ImageUrl = "https://i.imgur.com/G7NI1GC.jpg" },
+                new Image() { RestaurantID = 10, ImageUrl = "https://i.imgur.com/V5yt6HT.jpg" },
+                new Image() { RestaurantID = 14, ImageUrl = "https://i.imgur.com/fKYM9cz.jpg" });
 
             context.Ratings.AddOrUpdate(
                 new Rating() { RestaurantID = 1, UserID = 1, Rate = 3 },
