@@ -65,7 +65,7 @@ li {
 }
 @media screen and (max-width: 770px) {
   .header {
-    height: 450px;
+  
   }
   .title {
     font-size: 1.6em;
@@ -75,7 +75,6 @@ li {
   }
   .head-intro {
     width: 90%;
-    margin-top: 150px;
   }
 }
 </style>

@@ -66,4 +66,13 @@ export default {
     width: 100vw;
     background: url("~@/assets/img/head-img.jpg") center/cover;
 }
+
+@media screen and (max-width: 770px) {
+    .head-intro {
+        width: 100%;
+    }
+    .title {
+        width: 100%;
+    }
+}
 </style>
