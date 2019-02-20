@@ -16,5 +16,6 @@ namespace EatBrussels.Models
         public string closingHour { get; set; }
         public string description { get; set; }
         public string zipCode { get; set; }
+        public int averageRating { get; set; }
     }
 }
