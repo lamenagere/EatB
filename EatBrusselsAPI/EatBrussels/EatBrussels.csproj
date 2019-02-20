@@ -247,6 +247,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Entities\KitchenType.cs" />
     <Compile Include="Entities\Rating.cs" />
+    <Compile Include="Models\NewRestaurantModel.cs" />
     <Compile Include="Models\RatingModel.cs" />
     <Compile Include="Models\RestaurantModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

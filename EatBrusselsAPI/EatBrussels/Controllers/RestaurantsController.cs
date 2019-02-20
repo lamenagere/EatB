@@ -19,6 +19,7 @@ namespace EatBrussels.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: api/Restaurants    retourne tout les resto par rating décroissant
+        [ResponseType(typeof(List<RestaurantModel>))]
         public async Task<IHttpActionResult> GetRestaurants()
         {
             var restaurantTemp = await (from r in db.Restaurants
@@ -46,7 +47,7 @@ namespace EatBrussels.Controllers
         }
 
         // GET: api/Restaurants/5
-        [ResponseType(typeof(Restaurant))]
+        [ResponseType(typeof(RestaurantModel))]
         public IHttpActionResult GetRestaurant(int id)
         {
             var restaurantModel = (from r in db.Restaurants.AsParallel()
@@ -68,6 +69,7 @@ namespace EatBrussels.Controllers
         }
 
         // GET: api/Restaurants/type de cuisine
+        [ResponseType(typeof(List<RestaurantModel>))]
         public async Task<IHttpActionResult> GetRestaurants(string kitchenType)
         {
             var restaurantTemp = await (from r in db.Restaurants
@@ -96,6 +98,7 @@ namespace EatBrussels.Controllers
         }
 
         // GET: api/Restaurants/code postal
+        [ResponseType(typeof(List<RestaurantModel>))]
         public async Task<IHttpActionResult> GetRestaurantsByZipCode(string zipCode)
         {
             var restaurantTemp = await (from r in db.Restaurants
@@ -159,15 +162,35 @@ namespace EatBrussels.Controllers
         }
 
         // POST: api/Restaurants
-        [ResponseType(typeof(Restaurant))]
-        public async Task<IHttpActionResult> PostRestaurant(RestaurantModel restaurant)
+        [ResponseType(typeof(RestaurantModel))]
+        public async Task<IHttpActionResult> PostRestaurant(NewRestaurantModel restaurant)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
+            // Ajoute le restaurant
             var newRestaurant = db.Restaurants.Add(restaurant.ConvertModelToRestaurant());
+
+            // Ajoute les images correspondantes
+            if (restaurant.images.Count() > 0)
+            {
+                foreach (var img in restaurant.ConvertModelToImages())
+                {
+                    db.Images.Add(img);
+                }
+            }
+
+            // Ajoute les kitchenTypes
+            if (restaurant.kitchenTypes.Count() > 0)
+            {
+                foreach (var kt in restaurant.ConvertModelToKitchen())
+                {
+                    db.Kitchens.Add(kt);
+                }
+            }
+            
             await db.SaveChangesAsync();
 
             return CreatedAtRoute("DefaultApi", new { id = newRestaurant.RestaurantID }, newRestaurant);

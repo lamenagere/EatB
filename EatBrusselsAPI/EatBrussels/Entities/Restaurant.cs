@@ -17,5 +17,6 @@ namespace EatBrussels.Entities
         public string ZipCode { get; set; }
         public string Description { get; set; }
         public virtual ICollection<Kitchen> Kitchens { get; set; }
+        //public virtual ICollection<Image> Images { get; set; }
     }
 }

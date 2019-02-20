@@ -9,7 +9,12 @@ namespace EatBrussels.Mapper
 {
     public static class Mapper
     {
-        public static Restaurant ConvertModelToRestaurant (this RestaurantModel restaurantModel)
+        /// <summary>
+        /// RestaurantModel to Restaurant
+        /// </summary>
+        /// <param name="restaurantModel"></param>
+        /// <returns></returns>
+        public static Restaurant ConvertModelToRestaurant (this NewRestaurantModel restaurantModel)
         {
             return new Restaurant()
             {
@@ -23,6 +28,14 @@ namespace EatBrussels.Mapper
             };
         }
 
+        /// <summary>
+        /// Restaurant to RestaurantModel
+        /// </summary>
+        /// <param name="restaurant"></param>
+        /// <param name="kitchenLabel"></param>
+        /// <param name="imageUrl"></param>
+        /// <param name="averageRating"></param>
+        /// <returns></returns>
         public static RestaurantModel ConvertRestaurantToModel (this Restaurant restaurant, string kitchenLabel, string imageUrl, int averageRating)
         {
             return new RestaurantModel()
@@ -40,5 +53,24 @@ namespace EatBrussels.Mapper
             };
         }
 
+        /// <summary>
+        /// RestaurantModel to Image
+        /// </summary>
+        /// <param name="restaurant"></param>
+        /// <returns></returns>
+        public static IEnumerable<Image> ConvertModelToImages (this NewRestaurantModel restaurant)
+        {
+            return restaurant.images.Select(i => new Image() { ImageUrl = i, RestaurantID = restaurant.restaurantID });
+        }
+
+        /// <summary>
+        /// RestaurantModel to 
+        /// </summary>
+        /// <param name="restaurant"></param>
+        /// <returns></returns>
+        public static IEnumerable<Kitchen> ConvertModelToKitchen (this NewRestaurantModel restaurant)
+        {
+            return restaurant.kitchenTypes.Select(k => new Kitchen() { KitchenTypeID = k, RestaurantID = restaurant.restaurantID });
+        }
     }
 }
