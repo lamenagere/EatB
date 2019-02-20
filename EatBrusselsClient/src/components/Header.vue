@@ -13,19 +13,12 @@
         </li>
       </ul>
     </nav>
-    <Slide right class="burger">
-      <a id="home" href="#">
-        <span>Se connecter</span>
-      </a>
-    </Slide>
   </div>
 </template>
 
 <script>
-import { Slide } from 'vue-burger-menu'
 export default {
   components: {
-        Slide // Register your component
     }
 };
 </script>

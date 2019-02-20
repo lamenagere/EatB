@@ -7,14 +7,14 @@
       <div class="info-resto">
         <div class="name-resto">
           <h3>{{resto.name}}</h3>
-          <p>Cuisine {{resto.kitchenType}}</p>
+          <p>Cuisine {{resto.kitchenType}} {{resto.averageRating}} </p>
         </div>
         <span class="stars">
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
-          <i class="fas fa-star"></i>
+          <i class="fas fa-star" :class="{yellow: resto.averageRating >= 1} "></i>
+          <i class="fas fa-star" :class="{yellow: resto.averageRating >= 2} "></i>
+          <i class="fas fa-star" :class="{yellow: resto.averageRating >= 3} "></i>
+          <i class="fas fa-star" :class="{yellow: resto.averageRating >= 4} "></i>
+          <i class="fas fa-star" :class="{yellow: resto.averageRating >= 5}"></i>
         </span>
       </div>
     </a>
@@ -24,7 +24,9 @@
 
 <script>
 export default {
-  props: ["resto"]
+  props: ["resto"],
+  data: {
+  }
 };
 </script>
 
@@ -33,6 +35,9 @@ export default {
 a{
   text-decoration: none;
   color: black;
+}
+.yellow {
+  color: crimson;
 }
 .resto {
   width: 300px;
