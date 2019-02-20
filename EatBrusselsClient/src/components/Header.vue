@@ -54,7 +54,8 @@ li {
   max-width: 100vw;
   height: 50px;
   overflow: hidden;
-  background: black;
+  background: rgb(32, 32, 32);
+  // opacity: 0.8;
 }
 
 
@@ -64,9 +65,6 @@ li {
   }
 }
 @media screen and (max-width: 770px) {
-  .header {
-    height: 450px;
-  }
   .title {
     font-size: 1.6em;
   }

@@ -1,5 +1,6 @@
 <template>
 <div class="fullwidth">
+    <div class="img-head-resto"></div>
     <div class="container">
         <div class="resto">
             <div class="resto__bloc">
@@ -20,7 +21,7 @@
                 <div class="menu_item">
                     <div class="menu_title">
                         <h4>Entrées</h4>
-                        <p>Toutes nos entrées sont servies avec du pain italien bla bla bla</p>
+                        <!-- <p>Toutes nos entrées sont servies avec du pain italien bla bla bla</p> -->
                     </div>
                     <div class="plat_container">
                         <!-- DEBUT LISTE PLATS -->
@@ -124,6 +125,7 @@
             
         </div>
     </div>
+    
 </div>
 </template>
 
@@ -143,9 +145,15 @@ export default {
 }
 </script>
 <style scoped lang="scss">
+.img-head-resto{
+    background: url("~@/assets/img/daclaudio.jpg") center/cover;
+    height: 500px;
+    overflow: hidden;
+}
 .fullwidth {
     width: 100vw;
-    background: rgb(238, 238, 238);
+    background: rgb(243, 243, 243);
+    padding-bottom: 80px;
 }
 .resto {
     margin: 0 auto;
@@ -164,7 +172,7 @@ export default {
             font-size: 50px;
         }
         & .tags {
-            font-size: 12px;
+            font-size: 1em;
             color: grey;
             font-style: italic;
         }
@@ -198,8 +206,7 @@ export default {
     }
     & h5 {
         font-size: 16px;
-        text-transform: uppercase;
-        color:rgb(63, 63, 63);
+        color:rgb(48, 48, 48);
     }
     & p {
         color:rgb(138, 138, 138);
@@ -219,12 +226,21 @@ export default {
     text-align: left;
 }
 .order {
-    background: white;
+    background: crimson;
+    color: #ffffff;
     height: 40px;
     line-height: 40px;
     cursor:pointer;
 }
 .selection {
     height: 200px;
+}
+h4{
+    font-size: 1.3em;
+}
+@media screen and (max-width: 770px) {
+.img-head-resto{
+    height: 300px;
+}
 }
 </style>

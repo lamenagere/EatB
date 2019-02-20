@@ -1,8 +1,8 @@
 <template>
   <div class="resto-pref">
-    <h1 class="container">Les restaurants {{type}} les mieux notés</h1>
+    <h1 class="container">Les restaurants les mieux notés</h1>
     <div class="resto-list container">
-      <Resto v-for="(r, index) in resto" :key="index" :name="r.name"/>
+      <Resto v-for="(r, index) in resto" :key="index" :resto="r"/>
     </div>
     <div class="more">
       <button>voir plus</button>
@@ -36,7 +36,7 @@ export default {
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
 .resto-pref {
-  background: rgb(238, 238, 238);
+  background: rgb(243, 243, 243);
   padding-bottom: 100px;
 }
 h1 {

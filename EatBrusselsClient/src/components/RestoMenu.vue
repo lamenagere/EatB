@@ -18,7 +18,7 @@ export default {
 <style lang="scss">
 .menu {
     height: 40px;
-    background-color:rgb(238, 238, 238);
+    background-color:rgb(243, 243, 243);
     width: 100%;
     display: flex;
     align-items: baseline;
@@ -26,8 +26,9 @@ export default {
         text-decoration: none;
         color: black;
         margin: 0 15px 0 0;
-        color: coral;
-        font: 25px bolder Roboto, sans-serif ;
+        color: crimson;
+        font: 1.2em bolder 'Roboto', sans-serif ;
+        font-weight: bold;
         line-height: 40px;
     }
 }
