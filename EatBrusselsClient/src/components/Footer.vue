@@ -28,7 +28,7 @@ export default {};
 
 <style lang="scss">
 .foot {
-  background-color: rgb(37, 37, 37);
+  background-color: rgb(32, 32, 32);
   padding: 40px 0;
 }
 .footer {
