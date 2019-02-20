@@ -51,7 +51,8 @@ namespace EatBrussels.Migrations
                         Address = "Place Georges Brugmann 21, 1180 Uccle",
                         ZipCode = "1180",
                         OpeningHour = "10:00",
-                        ClosingHour = "19:00"
+                        ClosingHour = "19:00",
+                        Description = ""
                     },
                     new Restaurant()
                     {
@@ -60,7 +61,8 @@ namespace EatBrussels.Migrations
                         Address = "Chaussée de Waterloo 436, 1050 Ixelles",
                         ZipCode = "1050",
                         OpeningHour = "10:00",
-                        ClosingHour = "19:00"
+                        ClosingHour = "19:00",
+                        Description = ""
                     },
                     new Restaurant()
                     {
@@ -69,7 +71,8 @@ namespace EatBrussels.Migrations
                         Address = "Avenue De Fré 195, 1180 Uccle",
                         ZipCode = "1180",
                         OpeningHour = "10:00",
-                        ClosingHour = "19:00"
+                        ClosingHour = "19:00",
+                        Description = ""
                     },
                     new Restaurant()
                     {
@@ -78,7 +81,8 @@ namespace EatBrussels.Migrations
                         Address = "Rue du Page 7, 1050 Ixelles",
                         ZipCode = "1050",
                         OpeningHour = "10:00",
-                        ClosingHour = "19:00"
+                        ClosingHour = "19:00",
+                        Description = ""
                     },
                     new Restaurant()
                     {
@@ -87,7 +91,8 @@ namespace EatBrussels.Migrations
                         Address = "Rue de Belle-vue 62, 1000 Bruxelles",
                         ZipCode = "1000",
                         OpeningHour = "09:00",
-                        ClosingHour = "20:00"
+                        ClosingHour = "20:00",
+                        Description = ""
                     },
                     new Restaurant()
                     {
@@ -96,7 +101,8 @@ namespace EatBrussels.Migrations
                         Address = "Boulevard d'Ypres 33, 1000 Bruxelles",
                         ZipCode = "1000",
                         OpeningHour = "11:00",
-                        ClosingHour = "23:00"
+                        ClosingHour = "23:00",
+                        Description = ""
                     },
                     new Restaurant()
                     {
@@ -105,7 +111,8 @@ namespace EatBrussels.Migrations
                         Address = "Chaussée de Vleurgat 142, 1050 Bruxelles",
                         ZipCode = "1050",
                         OpeningHour = "12:00",
-                        ClosingHour = "23:00"
+                        ClosingHour = "23:00",
+                        Description = ""
                     },
                     new Restaurant()
                     {
@@ -114,7 +121,8 @@ namespace EatBrussels.Migrations
                         Address = "Avenue des Saisons 123, 1050 Ixelles",
                         ZipCode = "1050",
                         OpeningHour = "12:00",
-                        ClosingHour = "22:30"
+                        ClosingHour = "22:30",
+                        Description = ""
                     },
                     new Restaurant()
                     {
@@ -123,7 +131,8 @@ namespace EatBrussels.Migrations
                         Address = "Chaussée de Waterloo 1022-1024, 1180 Bruxelles",
                         ZipCode = "1080",
                         OpeningHour = "12:00",
-                        ClosingHour = "22:00"
+                        ClosingHour = "22:00",
+                        Description = ""
                     },
                     new Restaurant()
                     {
@@ -132,7 +141,8 @@ namespace EatBrussels.Migrations
                         Address = "Chaussée de Waterloo 1022-1024, 1180 Bruxelles",
                         ZipCode = "1080",
                         OpeningHour = "11:00",
-                        ClosingHour = "23:00"
+                        ClosingHour = "23:00",
+                        Description = ""
                     },
                     new Restaurant()
                     {
@@ -141,7 +151,8 @@ namespace EatBrussels.Migrations
                         Address = "Rue de Florence 26",
                         ZipCode = "1050",
                         OpeningHour = "10:00",
-                        ClosingHour = "19:00"
+                        ClosingHour = "19:00",
+                        Description = ""
                     },
                     new Restaurant()
                     {
@@ -150,7 +161,8 @@ namespace EatBrussels.Migrations
                         Address = "Rue Notre-Dame-du-Sommeil 12",
                         ZipCode = "1000",
                         OpeningHour = "10:00",
-                        ClosingHour = "19:00"
+                        ClosingHour = "19:00",
+                        Description = ""
                     },
                     new Restaurant()
                     {
@@ -159,7 +171,8 @@ namespace EatBrussels.Migrations
                         Address = "Rue de Rollebeek 23",
                         ZipCode = "1000",
                         OpeningHour = "10:00",
-                        ClosingHour = "19:00"
+                        ClosingHour = "19:00",
+                        Description = ""
                     },
                     new Restaurant()
                     {
@@ -168,7 +181,8 @@ namespace EatBrussels.Migrations
                         Address = "Rue de Laeken 34",
                         ZipCode = "1000",
                         OpeningHour = "18:00",
-                        ClosingHour = "22:30"
+                        ClosingHour = "22:30",
+                        Description = ""
                     },
                     new Restaurant()
                     {
@@ -177,7 +191,8 @@ namespace EatBrussels.Migrations
                         Address = "Rue des Chartreux 32",
                         ZipCode = "1000",
                         OpeningHour = "11:00",
-                        ClosingHour = "00:00"
+                        ClosingHour = "00:00",
+                        Description = ""
                     }
                 );
 
