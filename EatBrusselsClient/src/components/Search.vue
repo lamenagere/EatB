@@ -4,7 +4,7 @@
       <div class="head-intro">
         <h1 class="title">Les meilleurs restaurants près de chez vous.</h1>
         <div class="search">
-          <input type="text" name="adress" id class="search-bar" placeholder="Votre adresse">
+          <input type="text" name="adress" id class="search-bar" placeholder="Votre code postal">
           <div class="loupe-bg">
             <i class="fas fa-search"></i>
           </div>
@@ -27,11 +27,13 @@ export default {
     text-align: left;
     margin: 0;
     padding-top: 150px;
+    width: 450px;
 }
 .img-head {
     z-index: -2;
 }
 .search {
+    margin-top: 20px;
     display: flex;
     align-items: center;
 }

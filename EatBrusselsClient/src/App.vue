@@ -32,6 +32,8 @@ export default {
 }
 body{
   margin: 0;
+  font-family: "Open Sans", sans-serif; 
+  text-align: center;
 }
 h1, h2, h3, h4, h5 {
   font-family: "Roboto", sans-serif; 

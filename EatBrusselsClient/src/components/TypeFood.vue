@@ -3,28 +3,46 @@
     <h1>Les types de cuisine préférés</h1>
     <div class="food-type">
       <div class="type">
-        <h3>Asiatique</h3>
-        <div class="img-type asian"></div>
+        <router-link to="/routerlist" class="filtertype">
+          <a href>
+            <h3>Asiatique</h3>
+            <div class="img-type asian"></div>
+          </a>
+        </router-link>
       </div>
       <div class="type">
-        <h3>Américain</h3>
-        <div class="img-type americain"></div>
+        <router-link to="/" class="filtertype">
+          <a href>
+            <h3>Américaine</h3>
+            <div class="img-type americain"></div>
+          </a>
+        </router-link>
       </div>
       <div class="type">
-        <h3>Européen</h3>
-        <div class="img-type europeen"></div>
+        <router-link to="/" class="filtertype">
+          <a href>
+            <h3>Européene</h3>
+            <div class="img-type europeen"></div>
+          </a>
+        </router-link>
       </div>
       <div class="type">
-        <h3>Oriental</h3>
-        <div class="img-type oriental"></div>
+        <router-link to="/" class="filtertype">
+            <h3>Belge</h3>
+            <div class="img-type oriental"></div>
+        </router-link>
       </div>
       <div class="type">
-        <h3>Fast-food</h3>
-        <div class="img-type fastfood"></div>
+        <router-link to="/" class="filtertype">
+            <h3>Italienne</h3>
+            <div class="img-type fastfood"></div>
+        </router-link>
       </div>
       <div class="type">
-        <h3>Healthy</h3>
-        <div class="img-type healthy"></div>
+        <router-link to="/" class="filtertype">
+            <h3>Healthy</h3>
+            <div class="img-type healthy"></div>
+        </router-link>
       </div>
     </div>
   </div>
@@ -41,6 +59,10 @@ export default {
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
 <style scoped lang="scss">
+a {
+  text-decoration: none;
+  color: black;
+}
 .food-type {
   max-width: 100vw;
   display: flex;
@@ -62,7 +84,7 @@ export default {
   background: url(~@/assets/img/burgerr.jpg) center/cover;
 }
 .fastfood {
-  background: url(~@/assets/img/festofood.jpg) center/cover;
+  background: url(~@/assets/img/ital.jpg) center/cover;
 }
 .healthy {
   background: url(~@/assets/img/health.jpg) center/cover;

@@ -1,6 +1,6 @@
 <template>
   <div class="resto-pref">
-    <h1 class="container">Les restaurants les mieux notés</h1>
+    <h1 class="container">Les restaurants {{type}} les mieux notés</h1>
     <div class="resto-list container">
       <Resto v-for="(r, index) in resto" :key="index" :name="r.name"/>
     </div>
