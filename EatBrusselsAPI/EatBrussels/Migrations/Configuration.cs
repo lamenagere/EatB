@@ -198,6 +198,25 @@ namespace EatBrussels.Migrations
                     new Kitchen() { KitchenTypeID = 2, RestaurantID = 14 },
                     new Kitchen() { KitchenTypeID = 3, RestaurantID = 15 });
 
+            context.Images.AddOrUpdate(
+                new Image() { RestaurantID = 1, ImageUrl = "https://cdn.filestackcontent.com/FIIBSMXReqsJd20Cr1kL" },
+                new Image() { RestaurantID = 11, ImageUrl = "https://cdn.filestackcontent.com/X43bXCD8S068TY6t3XRk" },
+                new Image() { RestaurantID = 5, ImageUrl = "https://cdn.filestackcontent.com/uqv6XMQmTa2col9Z80Bc" },
+                new Image() { RestaurantID = 9, ImageUrl = "https://cdn.filestackcontent.com/6uE3c2OJQg0Kz0HKoCSg" },
+                new Image() { RestaurantID = 2, ImageUrl = "https://cdn.filestackcontent.com/gwKKzUQkW3x3weVHvJwq" },
+                new Image() { RestaurantID = 7, ImageUrl = "https://cdn.filestackcontent.com/P84DMK2SgGtzXQ6j2rdu" },
+                new Image() { RestaurantID = 6, ImageUrl = "https://cdn.filestackcontent.com/1okROa03SIm0UU5v5kZP" },
+                new Image() { RestaurantID = 4, ImageUrl = "https://cdn.filestackcontent.com/OHpNAkW2RKqX88PDFoJL" },
+                new Image() { RestaurantID = 12, ImageUrl = "https://cdn.filestackcontent.com/FdrpsNuPScqxZ9gM8OLn" },
+                new Image() { RestaurantID = 8, ImageUrl = "https://cdn.filestackcontent.com/b5grQsUTtqm4abFxmZwK" },
+                new Image() { RestaurantID = 15, ImageUrl = "https://cdn.filestackcontent.com/lQqxI6yNTDWGvjgEhenq" },
+                new Image() { RestaurantID = 13, ImageUrl = "https://cdn.filestackcontent.com/udnDGdCQROamLlQwbNVj" },
+                new Image() { RestaurantID = 3, ImageUrl = "https://cdn.filestackcontent.com/dt088a6hS2i1XGtCUjUp" },
+                new Image() { RestaurantID = 10, ImageUrl = "https://cdn.filestackcontent.com/VtJfU8tjTlyDI4D8xvtR" },
+                new Image() { RestaurantID = 14, ImageUrl = "https://cdn.filestackcontent.com/rHueqHnpQ8ygJ64HgV70" });
+
+
+
             context.SaveChanges();
         }
     }
