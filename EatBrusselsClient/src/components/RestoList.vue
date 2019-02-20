@@ -13,10 +13,12 @@
 <script>
 import Resto from "./Resto.vue";
 import axios from "axios";
+
 export default {
   data() {
     return {
-      resto: []
+      resto: [],
+      // restotypes: [],
     };
   },
   components: {
@@ -27,6 +29,10 @@ export default {
       //console.log(JSON.stringify(response.data))
       this.resto = response.data;
     });
+    // axios.get("http://localhost:63980/api/kitchentypes").then(response => {
+    //   //console.log(JSON.stringify(response.data))
+    //   this.restotypes = response.data;
+    // });
   }
 };
 </script>
