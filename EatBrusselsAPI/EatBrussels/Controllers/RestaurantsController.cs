@@ -25,8 +25,6 @@ namespace EatBrussels.Controllers
                                           join kt in db.KitchenTypes on kit.KitchenTypeID equals kt.KitchenTypeID
                                           join img in db.Images on r.RestaurantID equals img.RestaurantID
                                           join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID into rates
-                                          
-                                          
                                           select new RestaurantModel
                                           {
                                               restaurantID = r.RestaurantID,
@@ -56,6 +54,7 @@ namespace EatBrussels.Controllers
                                    join kit in db.Kitchens.AsParallel() on r.RestaurantID equals kit.RestaurantID
                                    join kt in db.KitchenTypes.AsParallel() on kit.KitchenTypeID equals kt.KitchenTypeID
                                    join img in db.Images.AsParallel() on r.RestaurantID equals img.RestaurantID
+                                   join rt in db.Ratings.AsParallel() on r.RestaurantID equals rt.RestaurantID into rates
                                    where r.RestaurantID == id
                                    select new RestaurantModel
                                    {
@@ -66,7 +65,8 @@ namespace EatBrussels.Controllers
                                        description = "",
                                        openingHour = r.OpeningHour,
                                        closingHour = r.ClosingHour,
-                                       imageUrl = img.ImageUrl
+                                       imageUrl = img.ImageUrl,
+                                       averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
                                    }).FirstOrDefault();
 
 
@@ -85,6 +85,7 @@ namespace EatBrussels.Controllers
                                           join k in db.Kitchens on r.RestaurantID equals k.RestaurantID
                                           join kt in db.KitchenTypes on k.KitchenTypeID equals kt.KitchenTypeID
                                           join img in db.Images on r.RestaurantID equals img.RestaurantID
+                                          join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID into rates
                                           where kt.KitchenLabel == kitchenType
                                           select new RestaurantModel
                                           {
@@ -95,7 +96,8 @@ namespace EatBrussels.Controllers
                                               description = "",
                                               openingHour = r.OpeningHour,
                                               closingHour = r.ClosingHour,
-                                              imageUrl = img.ImageUrl
+                                              imageUrl = img.ImageUrl,
+                                              averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
                                           }).Distinct().ToListAsync();
 
             if (restaurantModels == null)
@@ -113,6 +115,7 @@ namespace EatBrussels.Controllers
                                           join k in db.Kitchens on r.RestaurantID equals k.RestaurantID
                                           join kt in db.KitchenTypes on k.KitchenTypeID equals kt.KitchenTypeID
                                           join i in db.Images on r.RestaurantID equals i.RestaurantID
+                                          join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID into rates
                                           where r.ZipCode == zipCode
                                           
                                           select new RestaurantModel
@@ -124,7 +127,8 @@ namespace EatBrussels.Controllers
                                               description = "",
                                               openingHour = r.OpeningHour,
                                               closingHour = r.ClosingHour,
-                                              imageUrl = i.ImageUrl
+                                              imageUrl = i.ImageUrl,
+                                              averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
                                           }).Distinct().ToListAsync();
 
             if (restaurantModels == null)
@@ -134,36 +138,6 @@ namespace EatBrussels.Controllers
 
             return Ok(restaurantModels);
         }
-
-        //GET: api/Restaurants/rating
-        //public async Task<IHttpActionResult> GetRestaurantsByRating(int rating)
-        //{
-        //    var restaurantModels = await(from r in db.Restaurants
-        //                                 join k in db.Kitchens on r.RestaurantID equals k.RestaurantID
-        //                                 join kt in db.KitchenTypes on k.KitchenTypeID equals kt.KitchenTypeID
-        //                                 join i in db.Images on r.RestaurantID equals i.RestaurantID
-        //                                 join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID
-        //                                 where rt.RatingID == rating
-
-        //                                 select new RestaurantModel
-        //                                 {
-        //                                     restaurantID = r.RestaurantID,
-        //                                     name = r.Name,
-        //                                     address = r.Address,
-        //                                     kitchenType = kt.KitchenLabel,
-        //                                     description = "",
-        //                                     openingHour = r.OpeningHour,
-        //                                     closingHour = r.ClosingHour,
-        //                                     imageUrl = i.ImageUrl
-        //                                 }Distinct().ToListAsync();
-        //    if (restaurantModels == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return Ok(restaurantModels);
-        //        )
-        //}
 
         // PUT: api/Restaurants/5
         [ResponseType(typeof(void))]
