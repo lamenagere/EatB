@@ -6,8 +6,8 @@
       <img src="@/assets/img/balmo.jpg" alt>
       <div class="info-resto">
         <div class="name-resto">
-          <h3>{{name}}</h3>
-          <p>Cuisine {{type}}</p>
+          <h3>{{resto.name}}</h3>
+          <p>Cuisine {{resto.KitchenLabel}}</p>
         </div>
         <span class="stars">
           <i class="fas fa-star"></i>
@@ -24,7 +24,7 @@
 
 <script>
 export default {
-  props: ["name", "type"]
+  props: ["resto"]
 };
 </script>
 
