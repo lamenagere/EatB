@@ -17,7 +17,8 @@ namespace EatBrussels.Mapper
                 Address = restaurant.address,
                 ZipCode = restaurant.zipCode,
                 OpeningHour = restaurant.openingHour,
-                ClosingHour = restaurant.closingHour
+                ClosingHour = restaurant.closingHour,
+                Description = restaurant.description
             };
         }
     }
