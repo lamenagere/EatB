@@ -13,7 +13,7 @@ using System.Collections.Generic;
 
 namespace EatBrussels.Controllers
 {
-    [EnableCors(origins:"*", headers:"*", methods:"*")]
+    [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class RestaurantsController : ApiController
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -22,17 +22,18 @@ namespace EatBrussels.Controllers
         public async Task<IHttpActionResult> GetRestaurants()
         {
             var restaurantTemp = await (from r in db.Restaurants
-                                          join kit in db.Kitchens on r.RestaurantID equals kit.RestaurantID
-                                          join kt in db.KitchenTypes on kit.KitchenTypeID equals kt.KitchenTypeID
-                                          join img in db.Images on r.RestaurantID equals img.RestaurantID
-                                          join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID into rates
-                                          select (new
-                                          {
-                                              restaurant = r as Restaurant,
-                                              kitchenType = kt.KitchenLabel,
-                                              imageUrl = img.ImageUrl,
-                                              averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
-                                          })).Distinct().ToListAsync();
+                                        join kit in db.Kitchens on r.RestaurantID equals kit.RestaurantID
+                                        join kt in db.KitchenTypes on kit.KitchenTypeID equals kt.KitchenTypeID
+                                        join img in db.Images on r.RestaurantID equals img.RestaurantID into imgs
+                                        from img in imgs.DefaultIfEmpty()
+                                        join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID into rates
+                                        select (new
+                                        {
+                                            restaurant = r as Restaurant,
+                                            kitchenType = kt.KitchenLabel,
+                                            imageUrl = string.IsNullOrEmpty(img.ImageUrl) ? "" : img.ImageUrl,
+                                            averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
+                                        })).Distinct().ToListAsync();
 
             List<RestaurantModel> result = restaurantTemp.Select(x => x.restaurant.ConvertRestaurantToModel(x.kitchenType, x.imageUrl, x.averageRating)).ToList();
 
@@ -51,7 +52,8 @@ namespace EatBrussels.Controllers
             var restaurantModel = (from r in db.Restaurants.AsParallel()
                                    join kit in db.Kitchens.AsParallel() on r.RestaurantID equals kit.RestaurantID
                                    join kt in db.KitchenTypes.AsParallel() on kit.KitchenTypeID equals kt.KitchenTypeID
-                                   join img in db.Images.AsParallel() on r.RestaurantID equals img.RestaurantID
+                                   join img in db.Images.AsParallel() on r.RestaurantID equals img.RestaurantID into imgs
+                                   from img in imgs.DefaultIfEmpty()
                                    join rt in db.Ratings.AsParallel() on r.RestaurantID equals rt.RestaurantID into rates
                                    where r.RestaurantID == id
                                    select r.ConvertRestaurantToModel(kt.KitchenLabel, img.ImageUrl, rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0)).FirstOrDefault();
@@ -69,18 +71,19 @@ namespace EatBrussels.Controllers
         public async Task<IHttpActionResult> GetRestaurants(string kitchenType)
         {
             var restaurantTemp = await (from r in db.Restaurants
-                                          join k in db.Kitchens on r.RestaurantID equals k.RestaurantID
-                                          join kt in db.KitchenTypes on k.KitchenTypeID equals kt.KitchenTypeID
-                                          join img in db.Images on r.RestaurantID equals img.RestaurantID
-                                          join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID into rates
-                                          where kt.KitchenLabel == kitchenType
-                                          select (new
-                                          {
-                                              restaurant = r as Restaurant,
-                                              kitchenType = kt.KitchenLabel,
-                                              imageUrl = img.ImageUrl,
-                                              averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
-                                          })).Distinct().ToListAsync();
+                                        join k in db.Kitchens on r.RestaurantID equals k.RestaurantID
+                                        join kt in db.KitchenTypes on k.KitchenTypeID equals kt.KitchenTypeID
+                                        join img in db.Images on r.RestaurantID equals img.RestaurantID into imgs
+                                        from img in imgs.DefaultIfEmpty()
+                                        join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID into rates
+                                        where kt.KitchenLabel == kitchenType
+                                        select (new
+                                        {
+                                            restaurant = r as Restaurant,
+                                            kitchenType = kt.KitchenLabel,
+                                            imageUrl = img.ImageUrl,
+                                            averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
+                                        })).Distinct().ToListAsync();
 
             List<RestaurantModel> result = restaurantTemp.Select(x => x.restaurant.ConvertRestaurantToModel(x.kitchenType, x.imageUrl, x.averageRating)).ToList();
 
@@ -96,17 +99,19 @@ namespace EatBrussels.Controllers
         public async Task<IHttpActionResult> GetRestaurantsByZipCode(string zipCode)
         {
             var restaurantTemp = await (from r in db.Restaurants
-                                          join k in db.Kitchens on r.RestaurantID equals k.RestaurantID
-                                          join kt in db.KitchenTypes on k.KitchenTypeID equals kt.KitchenTypeID
-                                          join i in db.Images on r.RestaurantID equals i.RestaurantID
-                                          join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID into rates
-                                          where r.ZipCode == zipCode
-                                          select ( new {
-                                              restaurant = r as Restaurant,
-                                              kitchenType =kt.KitchenLabel,
-                                              imageUrl =i.ImageUrl,
-                                              averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
-                                          })).Distinct().ToListAsync();
+                                        join k in db.Kitchens on r.RestaurantID equals k.RestaurantID
+                                        join kt in db.KitchenTypes on k.KitchenTypeID equals kt.KitchenTypeID
+                                        join img in db.Images on r.RestaurantID equals img.RestaurantID into imgs
+                                        from img in imgs.DefaultIfEmpty()
+                                        join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID into rates
+                                        where r.ZipCode == zipCode
+                                        select (new
+                                        {
+                                            restaurant = r as Restaurant,
+                                            kitchenType = kt.KitchenLabel,
+                                            imageUrl = img.ImageUrl,
+                                            averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
+                                        })).Distinct().ToListAsync();
 
             List<RestaurantModel> result = restaurantTemp.Select(x => x.restaurant.ConvertRestaurantToModel(x.kitchenType, x.imageUrl, x.averageRating)).ToList();
 
