@@ -9,17 +9,36 @@ namespace EatBrussels.Mapper
 {
     public static class Mapper
     {
-        public static Restaurant ConvertModelToRestaurant (this RestaurantModel restaurant)
+        public static Restaurant ConvertModelToRestaurant (this RestaurantModel restaurantModel)
         {
             return new Restaurant()
             {
-                Name = restaurant.name,
-                Address = restaurant.address,
-                ZipCode = restaurant.zipCode,
-                OpeningHour = restaurant.openingHour,
-                ClosingHour = restaurant.closingHour,
-                Description = restaurant.description
+                RestaurantID = restaurantModel.restaurantID,
+                Name = restaurantModel.name,
+                Address = restaurantModel.address,
+                ZipCode = restaurantModel.zipCode,
+                OpeningHour = restaurantModel.openingHour,
+                ClosingHour = restaurantModel.closingHour,
+                Description = restaurantModel.description
             };
         }
+
+        public static RestaurantModel ConvertRestaurantToModel (this Restaurant restaurant, string kitchenLabel, string imageUrl, int averageRating)
+        {
+            return new RestaurantModel()
+            {
+                restaurantID = restaurant.RestaurantID,
+                name = restaurant.Name,
+                address = restaurant.Address,
+                zipCode = restaurant.ZipCode,
+                openingHour = restaurant.OpeningHour,
+                closingHour = restaurant.ClosingHour,
+                description = restaurant.Description,
+                kitchenType = kitchenLabel,
+                imageUrl = imageUrl,
+                averageRating = averageRating
+            };
+        }
+
     }
 }

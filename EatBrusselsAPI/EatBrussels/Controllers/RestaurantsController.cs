@@ -9,6 +9,7 @@ using System.Web.Http;
 using System.Web.Http.Cors;
 using System.Web.Http.Description;
 using EatBrussels.Mapper;
+using System.Collections.Generic;
 
 namespace EatBrussels.Controllers
 {
@@ -20,31 +21,27 @@ namespace EatBrussels.Controllers
         // GET: api/Restaurants    retourne tout les resto par rating décroissant
         public async Task<IHttpActionResult> GetRestaurants()
         {
-            var restaurantModels = await (from r in db.Restaurants
+            var restaurantTemp = await (from r in db.Restaurants
                                           join kit in db.Kitchens on r.RestaurantID equals kit.RestaurantID
                                           join kt in db.KitchenTypes on kit.KitchenTypeID equals kt.KitchenTypeID
                                           join img in db.Images on r.RestaurantID equals img.RestaurantID
                                           join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID into rates
-                                          select new RestaurantModel
+                                          select (new
                                           {
-                                              restaurantID = r.RestaurantID,
-                                              name = r.Name,
-                                              address = r.Address,
+                                              restaurant = r as Restaurant,
                                               kitchenType = kt.KitchenLabel,
-                                              description = "",
-                                              openingHour = r.OpeningHour,
-                                              closingHour = r.ClosingHour,
                                               imageUrl = img.ImageUrl,
-                                              zipCode = r.ZipCode,
                                               averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
-                                          }).Distinct().OrderByDescending(x => x.averageRating).ToListAsync();
+                                          })).Distinct().ToListAsync();
 
-            if (restaurantModels == null)
+            List<RestaurantModel> result = restaurantTemp.Select(x => x.restaurant.ConvertRestaurantToModel(x.kitchenType, x.imageUrl, x.averageRating)).ToList();
+
+            if (result == null)
             {
                 return NotFound();
             }
 
-            return Ok(restaurantModels);
+            return Ok(result);
         }
 
         // GET: api/Restaurants/5
@@ -57,19 +54,7 @@ namespace EatBrussels.Controllers
                                    join img in db.Images.AsParallel() on r.RestaurantID equals img.RestaurantID
                                    join rt in db.Ratings.AsParallel() on r.RestaurantID equals rt.RestaurantID into rates
                                    where r.RestaurantID == id
-                                   select new RestaurantModel
-                                   {
-                                       restaurantID = r.RestaurantID,
-                                       name = r.Name,
-                                       address = r.Address,
-                                       kitchenType = kt.KitchenLabel,
-                                       description = "",
-                                       openingHour = r.OpeningHour,
-                                       closingHour = r.ClosingHour,
-                                       zipCode = r.ZipCode,
-                                       imageUrl = img.ImageUrl,
-                                       averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
-                                   }).FirstOrDefault();
+                                   select r.ConvertRestaurantToModel(kt.KitchenLabel, img.ImageUrl, rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0)).FirstOrDefault();
 
 
             if (restaurantModel == null)
@@ -83,64 +68,54 @@ namespace EatBrussels.Controllers
         // GET: api/Restaurants/type de cuisine
         public async Task<IHttpActionResult> GetRestaurants(string kitchenType)
         {
-            var restaurantModels = await (from r in db.Restaurants
+            var restaurantTemp = await (from r in db.Restaurants
                                           join k in db.Kitchens on r.RestaurantID equals k.RestaurantID
                                           join kt in db.KitchenTypes on k.KitchenTypeID equals kt.KitchenTypeID
                                           join img in db.Images on r.RestaurantID equals img.RestaurantID
                                           join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID into rates
                                           where kt.KitchenLabel == kitchenType
-                                          select new RestaurantModel
+                                          select (new
                                           {
-                                              restaurantID = r.RestaurantID,
-                                              name = r.Name,
-                                              address = r.Address,
+                                              restaurant = r as Restaurant,
                                               kitchenType = kt.KitchenLabel,
-                                              description = "",
-                                              openingHour = r.OpeningHour,
-                                              closingHour = r.ClosingHour,
-                                              zipCode = r.ZipCode,
                                               imageUrl = img.ImageUrl,
                                               averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
-                                          }).Distinct().OrderByDescending(r => r.averageRating).ToListAsync();
+                                          })).Distinct().ToListAsync();
 
-            if (restaurantModels == null)
+            List<RestaurantModel> result = restaurantTemp.Select(x => x.restaurant.ConvertRestaurantToModel(x.kitchenType, x.imageUrl, x.averageRating)).ToList();
+
+            if (result == null)
             {
                 return NotFound();
             }
 
-            return Ok(restaurantModels);
+            return Ok(result);
         }
 
         // GET: api/Restaurants/code postal
         public async Task<IHttpActionResult> GetRestaurantsByZipCode(string zipCode)
         {
-            var restaurantModels = await (from r in db.Restaurants
+            var restaurantTemp = await (from r in db.Restaurants
                                           join k in db.Kitchens on r.RestaurantID equals k.RestaurantID
                                           join kt in db.KitchenTypes on k.KitchenTypeID equals kt.KitchenTypeID
                                           join i in db.Images on r.RestaurantID equals i.RestaurantID
                                           join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID into rates
                                           where r.ZipCode == zipCode
-                                          
-                                          select new RestaurantModel
-                                          {
-                                              restaurantID = r.RestaurantID,
-                                              name = r.Name,
-                                              address = r.Address,
-                                              kitchenType = kt.KitchenLabel,
-                                              description = "",
-                                              openingHour = r.OpeningHour,
-                                              closingHour = r.ClosingHour,
-                                              zipCode = r.ZipCode,
-                                              imageUrl = i.ImageUrl,
+                                          select ( new {
+                                              restaurant = r as Restaurant,
+                                              kitchenType =kt.KitchenLabel,
+                                              imageUrl =i.ImageUrl,
                                               averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
-                                          }).Distinct().OrderByDescending(r => r.averageRating).ToListAsync();
+                                          })).Distinct().ToListAsync();
 
-            if (restaurantModels == null)
+            List<RestaurantModel> result = restaurantTemp.Select(x => x.restaurant.ConvertRestaurantToModel(x.kitchenType, x.imageUrl, x.averageRating)).ToList();
+
+            if (result == null)
             {
                 return NotFound();
             }
 
-            return Ok(restaurantModels);
+            return Ok(result);
         }
 
         // PUT: api/Restaurants/5
