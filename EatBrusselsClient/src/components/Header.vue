@@ -4,7 +4,7 @@
       <router-link to="/" class="logo">
         <i class="fas fa-hamburger"></i> Eat.brussels
       </router-link>
-      <ul>
+      <ul class="connex">
         <li>
           <a href="#" class="link-menu">Se connecter</a>
         </li>
@@ -13,11 +13,21 @@
         </li>
       </ul>
     </nav>
+    <Slide right class="burger">
+      <a id="home" href="#">
+        <span>Se connecter</span>
+      </a>
+    </Slide>
   </div>
 </template>
 
 <script>
-export default {};
+import { Slide } from 'vue-burger-menu'
+export default {
+  components: {
+        Slide // Register your component
+    }
+};
 </script>
 
 <style lang="scss">
@@ -29,12 +39,22 @@ nav {
   color: white;
   font-family: 'Open Sans'
 }
+.burger {
+  position: absolute;
+  right: 0;
+  display: none;
+}
+.bm-burger-button {
+  top: -40px;
+  right: 5px;
+}
 .logo {
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-size: 17px;
   text-decoration: none;
   color:white;
+  line-height: 50px;
 }
 ul {
   display: flex;
@@ -74,6 +94,12 @@ li {
   .head-intro {
     width: 90%;
     margin-top: 150px;
+  }
+  .burger {
+    display: block;
+  }
+  .connex {
+    display: none;
   }
 }
 </style>

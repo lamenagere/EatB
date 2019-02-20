@@ -1,13 +1,13 @@
 
 <template>
   <div class="resto">
-    <router-link to="/" class="filterrate">
+    <router-link :to="'/restos/' + resto.restaurantID" class="filterrate">
     <a href>
       <img src="@/assets/img/balmo.jpg" alt>
       <div class="info-resto">
         <div class="name-resto">
           <h3>{{resto.name}}</h3>
-          <p>Cuisine {{resto.KitchenLabel}}</p>
+          <p>Cuisine {{resto.kitchenType}}</p>
         </div>
         <span class="stars">
           <i class="fas fa-star"></i>
