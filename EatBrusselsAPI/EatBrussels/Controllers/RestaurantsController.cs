@@ -35,6 +35,7 @@ namespace EatBrussels.Controllers
                                               openingHour = r.OpeningHour,
                                               closingHour = r.ClosingHour,
                                               imageUrl = img.ImageUrl,
+                                              zipCode = r.ZipCode,
                                               averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
                                           }).Distinct().OrderByDescending(x => x.averageRating).ToListAsync();
 
@@ -65,6 +66,7 @@ namespace EatBrussels.Controllers
                                        description = "",
                                        openingHour = r.OpeningHour,
                                        closingHour = r.ClosingHour,
+                                       zipCode = r.ZipCode,
                                        imageUrl = img.ImageUrl,
                                        averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
                                    }).FirstOrDefault();
@@ -96,9 +98,10 @@ namespace EatBrussels.Controllers
                                               description = "",
                                               openingHour = r.OpeningHour,
                                               closingHour = r.ClosingHour,
+                                              zipCode = r.ZipCode,
                                               imageUrl = img.ImageUrl,
                                               averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
-                                          }).Distinct().ToListAsync();
+                                          }).Distinct().OrderByDescending(r => r.averageRating).ToListAsync();
 
             if (restaurantModels == null)
             {
@@ -127,9 +130,10 @@ namespace EatBrussels.Controllers
                                               description = "",
                                               openingHour = r.OpeningHour,
                                               closingHour = r.ClosingHour,
+                                              zipCode = r.ZipCode,
                                               imageUrl = i.ImageUrl,
                                               averageRating = rates.Count() > 0 ? (int)rates.Average(x => x.Rate) : 0
-                                          }).Distinct().ToListAsync();
+                                          }).Distinct().OrderByDescending(r => r.averageRating).ToListAsync();
 
             if (restaurantModels == null)
             {
