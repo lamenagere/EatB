@@ -24,7 +24,9 @@ namespace EatBrussels.Controllers
                                         join kit in db.Kitchens on r.RestaurantID equals kit.RestaurantID
                                         join kt in db.KitchenTypes on kit.KitchenTypeID equals kt.KitchenTypeID
                                         join img in db.Images on r.RestaurantID equals img.RestaurantID
-                                        select new RestaurantModel
+                                        join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID
+                                        
+                                         select new RestaurantModel
                                         {
                                             restaurantID = r.RestaurantID,
                                             name = r.Name,
@@ -69,7 +71,7 @@ namespace EatBrussels.Controllers
             return Ok(restaurantModel);
         }
 
-        // GET: api/Restaurants/
+        // GET: api/Restaurants/type de cuisine
         public async Task<IHttpActionResult> GetRestaurants(string kitchenType)
         {
             var restaurantModels = await (from r in db.Restaurants
@@ -96,6 +98,65 @@ namespace EatBrussels.Controllers
 
             return Ok(restaurantModels);
         }
+
+        // GET: api/Restaurants/code postal
+        public async Task<IHttpActionResult> GetRestaurantsByZipCode(string zipCode)
+        {
+            var restaurantModels = await (from r in db.Restaurants
+                                          join k in db.Kitchens on r.RestaurantID equals k.RestaurantID
+                                          join kt in db.KitchenTypes on k.KitchenTypeID equals kt.KitchenTypeID
+                                          join i in db.Images on r.RestaurantID equals i.RestaurantID
+                                          where r.ZipCode == zipCode
+                                          
+                                          select new RestaurantModel
+                                          {
+                                              restaurantID = r.RestaurantID,
+                                              name = r.Name,
+                                              address = r.Address,
+                                              kitchenType = kt.KitchenLabel,
+                                              description = "",
+                                              openingHour = r.OpeningHour,
+                                              closingHour = r.ClosingHour,
+                                              imageUrl = i.ImageUrl
+                                          }).Distinct().ToListAsync();
+
+            if (restaurantModels == null)
+            {
+                return NotFound();
+            }
+
+            return Ok(restaurantModels);
+        }
+
+        //GET: api/Restaurants/rating
+        //public async Task<IHttpActionResult> GetRestaurantsByRating(int rating)
+        //{
+        //    var restaurantModels = await(from r in db.Restaurants
+        //                                 join k in db.Kitchens on r.RestaurantID equals k.RestaurantID
+        //                                 join kt in db.KitchenTypes on k.KitchenTypeID equals kt.KitchenTypeID
+        //                                 join i in db.Images on r.RestaurantID equals i.RestaurantID
+        //                                 join rt in db.Ratings on r.RestaurantID equals rt.RestaurantID
+        //                                 where rt.RatingID == rating
+
+        //                                 select new RestaurantModel
+        //                                 {
+        //                                     restaurantID = r.RestaurantID,
+        //                                     name = r.Name,
+        //                                     address = r.Address,
+        //                                     kitchenType = kt.KitchenLabel,
+        //                                     description = "",
+        //                                     openingHour = r.OpeningHour,
+        //                                     closingHour = r.ClosingHour,
+        //                                     imageUrl = i.ImageUrl
+        //                                 }Distinct().ToListAsync();
+        //    if (restaurantModels == null)
+        //    {
+        //        return NotFound();
+        //    }
+
+        //    return Ok(restaurantModels);
+        //        )
+        //}
 
         // PUT: api/Restaurants/5
         [ResponseType(typeof(void))]
