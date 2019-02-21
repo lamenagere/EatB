@@ -58,9 +58,9 @@ namespace EatBrussels.Mapper
         /// </summary>
         /// <param name="restaurant"></param>
         /// <returns></returns>
-        public static IEnumerable<Image> ConvertModelToImages (this NewRestaurantModel restaurant)
+        public static IEnumerable<Image> ConvertModelToImages (this NewRestaurantModel restaurant, int restaurantID)
         {
-            return restaurant.images.Select(i => new Image() { ImageUrl = i, RestaurantID = restaurant.restaurantID });
+            return restaurant.images.Select(i => new Image() { ImageUrl = i, RestaurantID = restaurantID });
         }
 
         /// <summary>
@@ -68,9 +68,9 @@ namespace EatBrussels.Mapper
         /// </summary>
         /// <param name="restaurant"></param>
         /// <returns></returns>
-        public static IEnumerable<Kitchen> ConvertModelToKitchen (this NewRestaurantModel restaurant)
+        public static IEnumerable<Kitchen> ConvertModelToKitchen (this NewRestaurantModel restaurant, int restaurantID)
         {
-            return restaurant.kitchenTypes.Select(k => new Kitchen() { KitchenTypeID = k, RestaurantID = restaurant.restaurantID });
+            return restaurant.kitchenTypes.Select(k => new Kitchen() { KitchenTypeID = k, RestaurantID = restaurantID });
         }
     }
 }

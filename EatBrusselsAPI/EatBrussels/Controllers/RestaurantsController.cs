@@ -176,7 +176,7 @@ namespace EatBrussels.Controllers
             // Ajoute les images correspondantes
             if (restaurant.images.Count() > 0)
             {
-                foreach (var img in restaurant.ConvertModelToImages())
+                foreach (var img in restaurant.ConvertModelToImages(newRestaurant.RestaurantID))
                 {
                     db.Images.Add(img);
                 }
@@ -185,7 +185,7 @@ namespace EatBrussels.Controllers
             // Ajoute les kitchenTypes
             if (restaurant.kitchenTypes.Count() > 0)
             {
-                foreach (var kt in restaurant.ConvertModelToKitchen())
+                foreach (var kt in restaurant.ConvertModelToKitchen(newRestaurant.RestaurantID))
                 {
                     db.Kitchens.Add(kt);
                 }

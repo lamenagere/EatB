@@ -21,6 +21,39 @@ namespace EatBrussels.Migrations
             //context.Roles.AddOrUpdate(new IdentityRole("Restaurateur"));
             //context.Roles.AddOrUpdate(new IdentityRole("Client"));
 
+            context.Database.ExecuteSqlCommand("ALTER TABLE [KitchenTypes] NOCHECK CONSTRAINT ALL");
+            context.Database.ExecuteSqlCommand("DELETE FROM [KitchenTypes]");
+
+            context.Database.ExecuteSqlCommand("ALTER TABLE [Restaurants] NOCHECK CONSTRAINT ALL");
+            context.Database.ExecuteSqlCommand("DELETE FROM [Restaurants]");
+
+            context.Database.ExecuteSqlCommand("ALTER TABLE [Images] NOCHECK CONSTRAINT ALL");
+            context.Database.ExecuteSqlCommand("DELETE FROM [Images]");
+
+            context.Database.ExecuteSqlCommand("ALTER TABLE [Comments] NOCHECK CONSTRAINT ALL");
+            context.Database.ExecuteSqlCommand("DELETE FROM [Comments]");
+
+            context.Database.ExecuteSqlCommand("ALTER TABLE [Kitchens] NOCHECK CONSTRAINT ALL");
+            context.Database.ExecuteSqlCommand("DELETE FROM [Kitchens]");
+
+            context.Database.ExecuteSqlCommand("ALTER TABLE [Ratings] NOCHECK CONSTRAINT ALL");
+            context.Database.ExecuteSqlCommand("DELETE FROM [Ratings]");
+
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Comments', RESEED, 0)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Images', RESEED, 0)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Kitchens', RESEED, 0)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('KitchenTypes', RESEED, 0)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Ratings', RESEED, 0)");
+            context.Database.ExecuteSqlCommand("DBCC CHECKIDENT('Restaurants', RESEED, 0)");
+
+            context.Database.ExecuteSqlCommand("ALTER TABLE [KitchenTypes] CHECK CONSTRAINT ALL");
+            context.Database.ExecuteSqlCommand("ALTER TABLE [Restaurants] CHECK CONSTRAINT ALL");
+            context.Database.ExecuteSqlCommand("ALTER TABLE [Images] CHECK CONSTRAINT ALL");
+            context.Database.ExecuteSqlCommand("ALTER TABLE [Comments] CHECK CONSTRAINT ALL");
+            context.Database.ExecuteSqlCommand("ALTER TABLE [Kitchens] CHECK CONSTRAINT ALL");
+            context.Database.ExecuteSqlCommand("ALTER TABLE [Ratings] CHECK CONSTRAINT ALL");
+
+
             context.KitchenTypes.AddOrUpdate(
                     new KitchenType() { KitchenTypeID = 1, KitchenLabel="Belge" },
                     new KitchenType() { KitchenTypeID = 2, KitchenLabel = "Asiatique" },
