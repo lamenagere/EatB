@@ -29,7 +29,7 @@ export default {};
 <style lang="scss">
 .foot {
   background-color: rgb(32, 32, 32);
-  padding: 40px 0;
+  padding: 20px 0;
 }
 .footer {
   color: white;
@@ -43,6 +43,7 @@ export default {};
     color: white;
     display: block;
     padding: 5px 0;
+    font-size: 15px;
   }
   & img {
     width: 150px;

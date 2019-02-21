@@ -1,21 +1,20 @@
 <template>
   <div class="fullwidth">
-    <div class="img-head-resto"></div>
+    <div class="img-head-resto" :style="{background: 'url(' + resto.imageUrl + ') center/cover'}"></div>
     <div class="container">
       <div class="resto">
         <div class="resto__bloc">
           <div class="resto__infos">
             <h2>{{resto.name}}</h2>
-            <p class="tags">Cuisine {{resto.kitchenType}}</p>
-            <div class="address-rate">
-            <p>{{resto.address}}</p>
-            <span class="stars">
+              <div class="address-rate"> <p class="tags">Cuisine {{resto.kitchenType}}</p>             <span class="stars">
               <i class="fas fa-star" :class="{yellow: resto.averageRating >= 1} "></i>
               <i class="fas fa-star" :class="{yellow: resto.averageRating >= 2} "></i>
               <i class="fas fa-star" :class="{yellow: resto.averageRating >= 3} "></i>
               <i class="fas fa-star" :class="{yellow: resto.averageRating >= 4} "></i>
               <i class="fas fa-star" :class="{yellow: resto.averageRating >= 5}"></i>
-            </span></div>
+            </span></div><div class="flex-respo">
+            <p class="info-t"><span class="bold">Heures d'ouverture: </span>{{resto.openingHour}}-{{resto.closingHour}}</p><p class="info-t yo"><span class="bold">Adresse: </span>{{resto.address}}</p>
+          </div>
           </div>
         </div>
         <div class="resto__menu" v-sticky="{ zIndex: 10, stickyTop: 0, disabled: false}">
@@ -145,30 +144,52 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.info-t{
+  margin: 8px 0;
+}
+.yo{
+  margin-bottom: 50px;
+}
+.bold{
+  font-weight: bold;
+}
 .address-rate{
   display: flex;
   align-items: center;
+  margin-bottom: 20px;
+  margin-top: 10px;
 }
 .stars {
-  margin-left: 50px;
+  margin-left: 100px;
   font-size: 15px;
 }
 .yellow {
   color: crimson;
 }
 .img-head-resto {
-  background: url("~@/assets/img/daclaudio.jpg") center/cover;
-  height: 500px;
+  height: 400px;
+  width: 100%;
   overflow: hidden;
+  position: relative;
+  &::before{
+    content: '';
+    width: 100vw;
+    height: 100%;
+    background: black;
+    z-index: 5;
+    position: absolute;
+    left: 0;
+    opacity: 0.35;
+  }
 }
 .fullwidth {
-  width: 100vw;
+  width: 100%;
   background: rgb(243, 243, 243);
   padding-bottom: 80px;
 }
 .resto {
   margin: 0 auto;
-  width: 1025px;
+  width: 100%;
   font-family: "Open Sans";
   &__image img {
     width: 400px;
@@ -180,16 +201,21 @@ export default {
     text-align: left;
     & h2 {
       margin-bottom: 0px;
-      font-size: 50px;
+      font-size: 70px;
+      position: absolute;
+      top: 290px;
+      color: white;
+      z-index: 9;
     }
     & .tags {
-      font-size: 1em;
+      font-size: 1.4em;
       color: grey;
-      font-style: italic;
+      // font-style: italic;
     }
   }
   &__menu {
     display: flex;
+    background-color: rgb(243, 243, 243);
     justify-content: space-between;
     position: relative;
     border-top: 2px rgb(218, 218, 218) solid;
@@ -250,9 +276,71 @@ export default {
 h4 {
   font-size: 1.3em;
 }
+@media screen and (max-width: 1050px) {
+  .resto__menu {
+    max-width: 700px;
+  }
+  .basket{
+    width: 180px;
+  }
+  .plat_container {
+  max-width: 100%;
+}
+}
 @media screen and (max-width: 770px) {
   .img-head-resto {
     height: 300px;
   }
+.resto {
+  margin: 0 auto;
+  font-family: "Open Sans";
+  &__image img {
+    width: 400px;
+  }
+  &__bloc {
+    display: flex;
+  }
+  &__infos {
+    text-align: left;
+    & h2 {
+      font-size: 37px;
+      top: 260px;
+    }
+    & .tags {
+      font-size: 1em;
+    }
+  }
+  .info-t{
+    display: flex;
+    flex-direction: column;
+  }
+  .bold{
+    margin-bottom: 4px;
+  }
+  &__menu {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column-reverse;
+    position: relative;
+    border-top: 2px rgb(218, 218, 218) solid;
+    border-bottom: 2px rgb(218, 218, 218) solid;
+  }
+}
+.plat_container {
+  flex-direction: column;
+}
+.plat{
+  width: 100%;
+}
+.basket {
+  width: 100%;
+  position: relative;
+  text-align: center;
+  margin-bottom: 10px;
+}
+.resto__list{
+  margin-top: 30px;
+}
+
 }
 </style>

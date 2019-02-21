@@ -16,7 +16,7 @@
       </div>
       <div class="type">
         <router-link to="/routerlist/Européenne" class="filtertype">
-            <h3>Européene</h3>
+            <h3>Européenne</h3>
             <div class="img-type europeen"></div>
         </router-link>
       </div>

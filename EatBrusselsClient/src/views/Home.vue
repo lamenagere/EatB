@@ -27,7 +27,7 @@ export default {
     Search
   },
   created() {
-    axios.get("http://localhost:63980/api/restaurants").then(response => {
+    axios.get("http://labo-team4-bf.azurewebsites.net/api/restaurants").then(response => {
       //console.log(JSON.stringify(response.data))
       this.restoOnHome = response.data;
     });
