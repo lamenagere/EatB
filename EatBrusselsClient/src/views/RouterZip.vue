@@ -19,7 +19,7 @@ export default {
   },
   created(){
         axios
-      .get("http://localhost:63980/api/restaurants?zipCode=" + this.$route.params.zip)
+      .get("http://labo-team4-bf.azurewebsites.net/api/restaurants?zipCode=" + this.$route.params.zip)
         .then(response => {
            this.restoPerZipcode = response.data  
         })

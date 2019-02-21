@@ -215,6 +215,7 @@ export default {
   }
   &__menu {
     display: flex;
+    background-color: rgb(243, 243, 243);
     justify-content: space-between;
     position: relative;
     border-top: 2px rgb(218, 218, 218) solid;
