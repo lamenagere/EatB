@@ -14,7 +14,7 @@
       </ul>
       <Slide right class="burger">
         <a id="home" href="#">
-          <span>Home</span>
+          <span>Se connecter</span>
         </a>
       </Slide>
     </nav>
