@@ -64,13 +64,45 @@ namespace EatBrussels.Mapper
         }
 
         /// <summary>
-        /// RestaurantModel to 
+        /// RestaurantModel to kitchenType
         /// </summary>
         /// <param name="restaurant"></param>
         /// <returns></returns>
         public static IEnumerable<Kitchen> ConvertModelToKitchen (this NewRestaurantModel restaurant, int restaurantID)
         {
             return restaurant.kitchenTypes.Select(k => new Kitchen() { KitchenTypeID = k, RestaurantID = restaurantID });
+        }
+
+        /// <summary>
+        /// CommentModel to Comment
+        /// </summary>
+        /// <param name="commentModel"></param>
+        /// <returns></returns>
+        public static Comment ConvertToComment(this CommentModel commentModel)
+        {
+            return new Comment()
+            {
+                CommentID = commentModel.commentID,
+                RestaurantID = commentModel.restaurantID,
+                UserComment = commentModel.userComment,
+                UserID = commentModel.userID
+            };
+        }
+
+        /// <summary>
+        /// CommentModel to Comment
+        /// </summary>
+        /// <param name="comment"></param>
+        /// <returns></returns>
+        public static CommentModel ConvertToCommentModel(this Comment comment)
+        {
+            return new CommentModel()
+            {
+                commentID = comment.CommentID,
+                restaurantID = comment.RestaurantID,
+                userComment = comment.UserComment,
+                userID = comment.UserID
+            };
         }
     }
 }

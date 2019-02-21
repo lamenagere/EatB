@@ -1,13 +1,12 @@
 
 <template>
   <div class="resto">
-    <router-link :to="'/restos/' + resto.restaurantID" class="filterrate">
-    <a href>
-      <img src="@/assets/img/balmo.jpg" alt>
+    <router-link :to="'/restos/' + resto.restaurantID" class="filterrate resto">
+      <img :src="resto.imageUrl" alt>
       <div class="info-resto">
         <div class="name-resto">
           <h3>{{resto.name}}</h3>
-          <p>Cuisine {{resto.kitchenType}} {{resto.averageRating}} </p>
+          <p>Cuisine {{resto.kitchenType}}</p>
         </div>
         <span class="stars">
           <i class="fas fa-star" :class="{yellow: resto.averageRating >= 1} "></i>
@@ -17,7 +16,6 @@
           <i class="fas fa-star" :class="{yellow: resto.averageRating >= 5}"></i>
         </span>
       </div>
-    </a>
     </router-link>
   </div>
 </template>
@@ -25,8 +23,6 @@
 <script>
 export default {
   props: ["resto"],
-  data: {
-  }
 };
 </script>
 
@@ -42,6 +38,8 @@ a{
 .resto {
   width: 300px;
   text-align: left;
+  break-inside: avoid;
+  overflow: hidden;
 }
 img {
   width: 100%;
@@ -62,14 +60,11 @@ p {
   font-size: 15px;
 }
 @media screen and (max-width: 770px) {
-  .resto-list {
-    display: flex;
-    flex-direction: column;
-  }
   .resto {
     width: 100%;
     text-align: left;
     display: flex;
+    flex-direction: row;
     justify-content: flex-start;
     align-items: center;
     margin-bottom: 25px;

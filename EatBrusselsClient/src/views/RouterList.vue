@@ -11,7 +11,7 @@ import axios from 'axios';
 export default {
   data(){
     return {
-      restoPerKitchenType: []
+      restoPerKitchenType: [],
     }
   },
   components: {
@@ -19,12 +19,10 @@ export default {
   },
   created(){
     axios
-      .get("http://localhost:63980/api/restaurants?kitchenType=" + this.$route.params.kitchenType)
+      .get("http://labo-team4-bf.azurewebsites.net/api/restaurants?kitchenType=" + this.$route.params.kitchenType)
         .then(response => {
            this.restoPerKitchenType = response.data  
         })
-    //appel ajax vers 'api/restaurants?kitchenType=' + this.$route.params.kitche    
-    //mettre response.data dans this.restoPerKitchenType
   }
   
 }

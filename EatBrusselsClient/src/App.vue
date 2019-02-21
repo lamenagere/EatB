@@ -34,6 +34,7 @@ body{
   margin: 0;
   font-family: "Open Sans", sans-serif; 
   text-align: center;
+  max-width: 100vw;
 }
 h1, h2, h3, h4, h5 {
   font-family: "Roboto", sans-serif; 
@@ -41,6 +42,9 @@ h1, h2, h3, h4, h5 {
 .container{
   max-width: 1050px;
   margin: 0 auto;
+}
+a{
+  text-decoration: none;
 }
 @media screen and (max-width: 1150px) {
   .container{

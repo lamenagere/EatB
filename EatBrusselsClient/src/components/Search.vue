@@ -4,10 +4,12 @@
       <div class="head-intro">
         <h1 class="title">Les meilleurs restaurants près de chez vous.</h1>
         <div class="search">
-          <input type="text" name="adress" id class="search-bar" placeholder="Votre code postal">
+          <input type="text" name="adress" id class="search-bar" placeholder="Votre code postal" v-model="message">
+          <router-link :to="'/routerzip/'+message" class="filterzipcodee">
           <div class="loupe-bg">
             <i class="fas fa-search"></i>
           </div>
+          </router-link>
         </div>
       </div>
     </div>
@@ -16,7 +18,15 @@
 
 <script>
 export default {
-
+  name: "zipCode",
+  data(){
+      return {
+          message:null
+      }
+  },
+  props: {
+    msg: String
+  }
 }
 </script>
 
@@ -60,17 +70,14 @@ export default {
 }
 .head-intro {
     height: 450px;
-    width: 100vw;
+    max-width: 100vw;
 }
 .fullwidth {
-    width: 100vw;
+    max-width: 100vw;
     background: url("~@/assets/img/head-img.jpg") center/cover;
 }
 
 @media screen and (max-width: 770px) {
-    .head-intro {
-        width: 100%;
-    }
     .title {
         width: 100%;
     }

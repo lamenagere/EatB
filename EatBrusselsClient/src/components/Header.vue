@@ -6,6 +6,9 @@
       </router-link>
       <ul class="connex">
         <li>
+          <router-link to="/addresto">Ajouter un restaurant</router-link>
+        </li>
+        <li>
           <a href="#" class="link-menu">Se connecter</a>
         </li>
         <li>
@@ -22,38 +25,55 @@
 </template>
 
 <script>
-import { Slide } from 'vue-burger-menu'
+import { Slide } from "vue-burger-menu";
 export default {
   components: {
     Slide
-    }
+  }
 };
 </script>
 
 <style lang="scss">
 /* nav */
+a {
+  text-decoration: none;
+  color:white;
+}
 nav {
   display: flex;
   justify-content: space-between;
   align-items: center;
   color: white;
-  font-family: 'Open Sans'
+  font-family: "Open Sans";
 }
+// burger css
 .burger {
   position: absolute;
   right: 0;
   display: none;
 }
 .bm-burger-button {
-  top: -15px;
-  right: 5px;
+  top: -8px;
+  height: 18px;
+  width: 22px;
 }
+.bm-burger-bars {
+  background-color: white;
+  border-radius: 2px;
+}
+.line-style {
+  position: absolute;
+  height: 2px;
+  left: 0;
+  right: 0;
+}
+
 .logo {
   font-family: "Roboto", sans-serif;
   font-weight: bold;
   font-size: 17px;
   text-decoration: none;
-  color:white;
+  color: white;
   line-height: 50px;
 }
 ul {
@@ -77,7 +97,6 @@ li {
   background: rgb(32, 32, 32);
   // opacity: 0.8;
 }
-
 
 @media screen and (max-width: 1150px) {
   .head-intro {

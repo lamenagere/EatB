@@ -4,6 +4,8 @@ import Home from './views/Home.vue'
 import About from './views/About.vue'
 import Restos from './views/Restos.vue'
 import RouterList from './views/RouterList.vue'
+import RouterZip from './views/RouterZip.vue'
+import AddResto from './views/AddResto.vue'
 
 Vue.use(Router)
 
@@ -39,6 +41,22 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: RouterList
+    },
+    {
+      path: '/routerzip/:zip',
+      name: 'routerzip',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: RouterZip
+    },{
+      path: '/addresto',
+      name: 'addresto',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: AddResto
     }
+    
   ]
 })
