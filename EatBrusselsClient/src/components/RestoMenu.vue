@@ -21,6 +21,7 @@ export default {
     background-color:rgb(243, 243, 243);
     width: 100%;
     display: flex;
+    flex-wrap: wrap;
     align-items: baseline;
     & a {
         text-decoration: none;
@@ -29,7 +30,12 @@ export default {
         color: crimson;
         font: 1.2em bolder 'Roboto', sans-serif ;
         font-weight: bold;
-        line-height: 40px;
+        line-height: 35px;
+    }
+}
+@media screen and (max-width: 770px) {
+    .menu{
+        height: auto;
     }
 }
 </style>
