@@ -9,6 +9,8 @@ using System.Net.Http;
 using System.Web.Http;
 using System.Web.Http.Description;
 using EatBrussels.Entities;
+using EatBrussels.Mapper;
+using EatBrussels.Models;
 
 namespace EatBrussels.Controllers
 {
@@ -26,30 +28,30 @@ namespace EatBrussels.Controllers
         [ResponseType(typeof(Comment))]
         public IHttpActionResult GetComment(int id)
         {
-            Comment comment = db.Comments.Find(id);
-            if (comment == null)
+            CommentModel commentModel = db.Comments.Find(id).ConvertToCommentModel();
+            if (commentModel == null)
             {
                 return NotFound();
             }
 
-            return Ok(comment);
+            return Ok(commentModel);
         }
 
         // PUT: api/Comments/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PutComment(int id, Comment comment)
+        public IHttpActionResult PutComment(int id, CommentModel comment)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            if (id != comment.CommentID)
+            if (id != comment.commentID)
             {
                 return BadRequest();
             }
 
-            db.Entry(comment).State = EntityState.Modified;
+            db.Entry(comment.ConvertToComment()).State = EntityState.Modified;
 
             try
             {
@@ -72,17 +74,17 @@ namespace EatBrussels.Controllers
 
         // POST: api/Comments
         [ResponseType(typeof(Comment))]
-        public IHttpActionResult PostComment(Comment comment)
+        public IHttpActionResult PostComment(CommentModel comment)
         {
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
 
-            db.Comments.Add(comment);
+            Comment newComment = db.Comments.Add(comment.ConvertToComment());
             db.SaveChanges();
 
-            return CreatedAtRoute("DefaultApi", new { id = comment.CommentID }, comment);
+            return CreatedAtRoute("DefaultApi", new { id = newComment.CommentID }, newComment);
         }
 
         // DELETE: api/Comments/5
