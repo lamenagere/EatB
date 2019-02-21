@@ -6,6 +6,9 @@
       </router-link>
       <ul class="connex">
         <li>
+          <router-link to="/addresto">Ajouter un restaurant</router-link>
+        </li>
+        <li>
           <a href="#" class="link-menu">Se connecter</a>
         </li>
         <li>
@@ -32,6 +35,10 @@ export default {
 
 <style lang="scss">
 /* nav */
+a {
+  text-decoration: none;
+  color:white;
+}
 nav {
   display: flex;
   justify-content: space-between;
