@@ -2,9 +2,9 @@
   <div class="resto-pref">
     <h1 class="container">{{title}}</h1>
     <div class="resto-list container">
-      <Resto v-for="(r, index) in resto" :key="index" :resto="r"/>
+      <Resto v-for="(r, index) in resto" :key="index" :resto="r" v-if="index < maxRestos"/>
     </div>
-    <div class="more">
+    <div class="more" v-if="!showAllRestos" @click="displayAllRestos()">
       <button>voir plus</button>
     </div>
   </div>
@@ -14,9 +14,22 @@
 import Resto from "./Resto.vue";
 
 export default {
-  props: ['resto', 'title'],
+  data () {
+    return {
+      restos: [],
+      maxRestos: 6,
+      showAllRestos: false,
+    }
+  },
+  props: ["resto", "title"],
   components: {
     Resto
+  },
+  methods: {
+    displayAllRestos(){
+      this.maxRestos += 6;
+      this.showAllRestos = this.maxRestos >= this.normalRestos.length;
+    }
   }
 };
 </script>
@@ -36,9 +49,7 @@ h1 {
   padding-top: 70px;
 }
 .resto-list {
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  columns: 3;
 }
 button {
   background: crimson;
@@ -50,6 +61,9 @@ button {
   font-weight: bold;
 }
 @media screen and (max-width: 1150px) {
+  .resto-list {
+    columns: 2;
+  }
   .resto-pref {
     padding-bottom: 70px;
   }
@@ -60,6 +74,9 @@ button {
   }
 }
 @media screen and (max-width: 770px) {
+  .resto-list {
+    columns: 1;
+  }
   h1 {
     font-size: 1.6em;
   }

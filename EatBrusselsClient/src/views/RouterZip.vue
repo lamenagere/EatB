@@ -1,6 +1,6 @@
 <template>
     <div>
-        <RestoList :resto="restoPerKitchenType" :title="`Le meilleur de la cuisine ${$route.params.kitchenType} à Bruxelles`"/>
+        <RestoList :resto="restoPerZipcode" :title="`Les meilleurs restaurants à ${$route.params.zip}`"/>
     </div>
 </template>
 
@@ -11,17 +11,17 @@ import axios from 'axios';
 export default {
   data(){
     return {
-      restoPerKitchenType: [],
+      restoPerZipcode: []
     }
   },
   components: {
     RestoList,
   },
   created(){
-    axios
-      .get("http://localhost:63980/api/restaurants?kitchenType=" + this.$route.params.kitchenType)
+        axios
+      .get("http://localhost:63980/api/restaurants?zipCode=" + this.$route.params.zip)
         .then(response => {
-           this.restoPerKitchenType = response.data  
+           this.restoPerZipcode = response.data  
         })
   }
   

@@ -6,8 +6,16 @@
         <div class="resto__bloc">
           <div class="resto__infos">
             <h2>{{resto.name}}</h2>
-            <p class="tags">Cuisine italienne</p>
+            <p class="tags">Cuisine {{resto.kitchenType}}</p>
+            <div class="address-rate">
             <p>{{resto.address}}</p>
+            <span class="stars">
+              <i class="fas fa-star" :class="{yellow: resto.averageRating >= 1} "></i>
+              <i class="fas fa-star" :class="{yellow: resto.averageRating >= 2} "></i>
+              <i class="fas fa-star" :class="{yellow: resto.averageRating >= 3} "></i>
+              <i class="fas fa-star" :class="{yellow: resto.averageRating >= 4} "></i>
+              <i class="fas fa-star" :class="{yellow: resto.averageRating >= 5}"></i>
+            </span></div>
           </div>
         </div>
         <div class="resto__menu" v-sticky="{ zIndex: 10, stickyTop: 0, disabled: false}">
@@ -86,7 +94,7 @@
                 <h5>Risotto à la truffe</h5>
                 <p>Risotto aux champignons et truffe</p>
               </div>
-                            <div class="plat">
+              <div class="plat">
                 <p class="price">15,00€</p>
                 <h5>Lasagne</h5>
                 <p>Lasagne du chef</p>
@@ -114,6 +122,7 @@ import axios from "axios";
 
 export default {
   name: "home",
+  props: ["resto"],
   data() {
     return {
       resto: []
@@ -136,6 +145,17 @@ export default {
 </script>
 
 <style scoped lang="scss">
+.address-rate{
+  display: flex;
+  align-items: center;
+}
+.stars {
+  margin-left: 50px;
+  font-size: 15px;
+}
+.yellow {
+  color: crimson;
+}
 .img-head-resto {
   background: url("~@/assets/img/daclaudio.jpg") center/cover;
   height: 500px;
