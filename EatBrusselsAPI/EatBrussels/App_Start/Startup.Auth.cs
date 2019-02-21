@@ -25,6 +25,7 @@ namespace EatBrussels
             // Configurer le contexte de base de données et le gestionnaire des utilisateurs pour utiliser une instance unique par demande
             app.CreatePerOwinContext(ApplicationDbContext.Create);
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
+            //app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager);
 
             // Activer l'application pour utiliser un cookie afin de stocker les informations de l'utilisateur connecté
             // et utiliser un cookie pour stocker temporairement des informations sur un utilisateur qui se connecte avec un fournisseur de connexion tiers

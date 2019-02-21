@@ -17,9 +17,7 @@ namespace EatBrussels.Migrations
 
         protected override void Seed(ApplicationDbContext context)
         {
-            //context.Roles.AddOrUpdate(new IdentityRole("Administrator"));
-            //context.Roles.AddOrUpdate(new IdentityRole("Restaurateur"));
-            //context.Roles.AddOrUpdate(new IdentityRole("Client"));
+            
 
             context.Database.ExecuteSqlCommand("ALTER TABLE [KitchenTypes] NOCHECK CONSTRAINT ALL");
             context.Database.ExecuteSqlCommand("DELETE FROM [KitchenTypes]");
@@ -52,6 +50,11 @@ namespace EatBrussels.Migrations
             context.Database.ExecuteSqlCommand("ALTER TABLE [Comments] CHECK CONSTRAINT ALL");
             context.Database.ExecuteSqlCommand("ALTER TABLE [Kitchens] CHECK CONSTRAINT ALL");
             context.Database.ExecuteSqlCommand("ALTER TABLE [Ratings] CHECK CONSTRAINT ALL");
+
+            context.Roles.AddOrUpdate(new IdentityRole { Name = "Administrator" });
+            context.Roles.AddOrUpdate(new IdentityRole { Name = "Restaurateur" });                     
+            context.Roles.AddOrUpdate(new IdentityRole { Name = "Client" });    
+
 
 
             context.KitchenTypes.AddOrUpdate(

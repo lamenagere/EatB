@@ -17,10 +17,11 @@ using EatBrussels.Entities;
 using EatBrussels.Providers;
 using EatBrussels.Results;
 using System.Web.Http.Cors;
+using System.Linq;
 
 namespace EatBrussels.Controllers
 {
-    [Authorize]
+    //[Authorize]
     [RoutePrefix("api/Account")]
     [EnableCors(origins: "*", headers: "*", methods: "*")]
     public class AccountController : ApiController
@@ -490,6 +491,23 @@ namespace EatBrussels.Controllers
                 return HttpServerUtility.UrlTokenEncode(data);
             }
         }
+
+        [HttpGet]
+        [Route("Role")]
+        [AllowAnonymous]
+        public async Task<IHttpActionResult> GetUserRole(UserInfoViewModel userModel)
+        {
+            var user = await UserManager.FindAsync(userModel.Email, "password");
+            string rolename = UserManager.GetRoles(user.Id).FirstOrDefault();
+            return Ok(rolename);
+        }
+
+        //public async Task<IHttpActionResult> Login (LoginModel loginModel)
+        //{
+            
+
+        //    return Ok();
+        //}
 
         #endregion
     }

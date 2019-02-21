@@ -228,6 +228,7 @@
     <Compile Include="Entities\Comment.cs" />
     <Compile Include="Entities\Image.cs" />
     <Compile Include="Entities\Kitchen.cs" />
+    <Compile Include="Entities\UserRole.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
