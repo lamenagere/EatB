@@ -25,15 +25,12 @@
                 <label for="name">Code postal communal </label>
                 <input id="name" type="text" v-model="restaurant.zipCode">
             </div>
-<<<<<<< HEAD
             <div>
                 <label for="image">Image du restaurant</label>
                 <input id="image" type="text" v-model="restaurant.imageUrl">
             </div>
             <button @click="post()">Ajouter ce restaurant à la liste</button>
-=======
             <button @click.prevent="post()">Ajouter ce restaurant à la liste</button>
->>>>>>> e8fcd9bef290d143f230d08d6c5135eb3bdcbd80
         </form>
     </div>
 </template>
@@ -48,10 +45,7 @@ export default {
             name: '',
             address:'',
             zipCode:'',
-<<<<<<< HEAD
             imageUrl:'',
-            }
-=======
             },
         allKitchenTypes: [{
             kitchenTypeID: 1,
@@ -61,7 +55,6 @@ export default {
             kitchenTypeID: 2,
             kitchenTypeLabel: "Asiatique"
         }],
->>>>>>> e8fcd9bef290d143f230d08d6c5135eb3bdcbd80
         }
     },
     created(){
