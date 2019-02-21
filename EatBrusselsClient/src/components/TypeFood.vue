@@ -57,18 +57,24 @@ export default {
 a {
   text-decoration: none;
   color: black;
+      display: flex;
+    flex-direction: column;
 }
 .food-type {
   max-width: 100vw;
-  display: flex;
-  flex-wrap: wrap;
-  justify-content: space-between;
+  columns: 3;
   margin-bottom: 100px;
 }
 .type {
   display: flex;
   flex-direction: column;
   width: 320px;
+  overflow: hidden; /* Fix for firefox and IE 10-11  */
+  -webkit-column-break-inside: avoid; /* Chrome, Safari, Opera */
+  page-break-inside: avoid; /* Firefox */
+  break-inside: avoid; /* IE 10+ */
+  break-inside: avoid-column;
+  break-before: avoid;
 }
 .img-type {
   width: 320px;
@@ -108,6 +114,7 @@ h3 {
   .food-type {
     max-width: 100vw;
     padding-bottom: 40px;
+    columns: 2;
   }
   .type {
     width: 300px;
@@ -126,6 +133,7 @@ h3 {
   }
   .food-type {
     max-width: 100vw;
+    columns: 1;
   }
   .type {
     width: 100%;
