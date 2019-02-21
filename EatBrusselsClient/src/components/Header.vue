@@ -12,13 +12,20 @@
           <a href="#" class="link-menu">S'inscrire</a>
         </li>
       </ul>
+      <Slide right class="burger">
+        <a id="home" href="#">
+          <span>Home</span>
+        </a>
+      </Slide>
     </nav>
   </div>
 </template>
 
 <script>
+import { Slide } from 'vue-burger-menu'
 export default {
   components: {
+    Slide
     }
 };
 </script>
@@ -38,7 +45,7 @@ nav {
   display: none;
 }
 .bm-burger-button {
-  top: -40px;
+  top: -15px;
   right: 5px;
 }
 .logo {
@@ -86,7 +93,6 @@ li {
   }
   .head-intro {
     width: 90%;
-    margin-top: 150px;
   }
   .burger {
     display: block;
