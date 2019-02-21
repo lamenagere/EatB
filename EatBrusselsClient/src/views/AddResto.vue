@@ -25,7 +25,7 @@
                 <label for="name">Code postal communal </label>
                 <input id="name" type="number" v-model="restaurant.zipCode">
             </div>
-            <button type="submit">Ajouter ce restaurant à la liste</button>
+            <button @click="post()">Ajouter ce restaurant à la liste</button>
         </form>
     </div>
 </template>
@@ -45,7 +45,7 @@ export default {
     },
     methods: {
         post(){
-            axios.post("http://localhost:63980/api/restaurants/", this.restaurant)
+            axios.post("http://localhost:63980/api/Restaurants", this.restaurant)
                 .then(response => {
                     this.restaurant.kitchenType = '';
                     this.restaurant.name = '';
