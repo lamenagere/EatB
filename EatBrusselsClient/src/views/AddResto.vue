@@ -25,6 +25,10 @@
                 <label for="name">Code postal communal </label>
                 <input id="name" type="number" v-model="restaurant.zipCode">
             </div>
+            <div>
+                <label for="image">Image du restaurant</label>
+                <input id="image" type="text" v-model="restaurant.imageUrl">
+            </div>
             <button @click="post()">Ajouter ce restaurant à la liste</button>
         </form>
     </div>
@@ -40,6 +44,7 @@ export default {
             name: '',
             address:'',
             zipCode:'',
+            imageUrl:'',
             }
         }
     },
@@ -51,6 +56,7 @@ export default {
                     this.restaurant.name = '';
                     this.restaurant.address = '';
                     this.restaurant.zipCode = '';
+                    this.restaurant.imageUrl = '';
                 })
         }
     }
