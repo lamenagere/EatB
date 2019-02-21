@@ -28,7 +28,6 @@ export default {
   methods: {
     displayAllRestos(){
       this.maxRestos += 6;
-      this.showAllRestos = this.maxRestos >= this.normalRestos.length;
     }
   }
 };
