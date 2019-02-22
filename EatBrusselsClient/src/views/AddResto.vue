@@ -36,8 +36,8 @@
                 </div>
 </div>
             <div class="flex-label">
-                <label for="image" class="label-title">Image du restaurant (copier l'URL)</label>
-                <input id="image" type="text" v-model="restaurant.imageUrl" class="input-l" required placeholder="http://...">
+                <label for="image" class="label-title">Image du restaurant (copier l'URL (séparer par une virgule si plusieurs urls))</label>
+                <input id="image" type="text" v-model="restaurant.images" class="input-l" required placeholder="http://...">
             </div>
             <button @click.prevent="post()">Ajouter ce restaurant à la liste</button>
         </form>
@@ -54,7 +54,7 @@ export default {
             name: '',
             address:'',
             zipCode:'',
-            imageUrl:'',
+            images:[],
             openingHour: '',
             closingHour: '',
             },

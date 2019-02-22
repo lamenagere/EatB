@@ -39,6 +39,11 @@
                 <label for="image" class="label-title">Image du restaurant (copier l'URL)</label>
                 <input id="image" type="text" v-model="restaurant.imageUrl" class="input-l" required placeholder="http://...">
             </div>
+            <div class="flex-label">
+                <label for="rating" class="label-title">Rating resto</label>
+                <input id="rating" type="text" v-model="restaurant.averageRating" class="input-l" required placeholder="http://...">
+            </div>
+            <button @click.prevent="rating()">Ajouter une étoile</button>
             <button @click.prevent="post()">Mettre à jour</button>
         </form>
     </div>
@@ -57,6 +62,7 @@ export default {
             imageUrl:'',
             openingHour: '',
             closingHour: '',
+            averageRating: '',
             },
         allKitchenTypes: [{
             kitchenTypeID: 1,
@@ -110,10 +116,15 @@ export default {
                     this.restaurant.zipCode = '';
                     this.restaurant.imageUrl = '';
                 })
-        }
-    }
+        },
+        rating(){
+            axios.put("http://labo-team4-bf.azurewebsites.net/api/Restaurants/" + this.$route.params.id, this.restaurant.averageRating)
+                .then(response => {
+                    this.restaurant.averageRating = 1;
+                    })
+            
 
-}
+}}}
 </script>
 
 <style scoped>

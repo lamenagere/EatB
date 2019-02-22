@@ -135,9 +135,9 @@ import axios from "axios";
 
 export default {
   name: "home",
-  props: ["resto"],
   data() {
     return {
+      resto: {}
     };
   },
   components: {
