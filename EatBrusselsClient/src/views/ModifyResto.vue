@@ -1,6 +1,6 @@
 <template>
     <div class="form-resto  container">
-        <h1>Ajouter un restaurant</h1>
+        <h1>Modifier votre restaurant</h1>
         <form class="form">
             <div>
             <label for="kitchenType" class="label-title">Type de cuisine </label>
@@ -39,7 +39,7 @@
                 <label for="image" class="label-title">Image du restaurant (copier l'URL)</label>
                 <input id="image" type="text" v-model="restaurant.imageUrl" class="input-l" required placeholder="http://...">
             </div>
-            <button @click.prevent="post()">Ajouter ce restaurant à la liste</button>
+            <button @click.prevent="post()">Mettre à jour</button>
         </form>
     </div>
 </template>
@@ -85,6 +85,12 @@ export default {
         }
     },
     created(){
+       axios
+      .get("http://labo-team4-bf.azurewebsites.net/api/restaurants/" + this.$route.params.id)
+      .then(response => {
+        this.restaurant.kitchenTypes = [''];
+        this.restaurant = response.data;
+      });
         //appeler URL qui renvoie un JSON de tous les kitchentypes
         //et les mettre dans allKitchenTypes
 
@@ -96,14 +102,14 @@ export default {
     },
     methods: {
         post(){
-            axios.post("http://labo-team4-bf.azurewebsites.net/api/Restaurants", this.restaurant)
+            axios.put("http://labo-team4-bf.azurewebsites.net/api/Restaurants/" + this.$route.params.id, this.restaurant)
                 .then(response => {
                     this.restaurant.kitchenTypes = [''];
                     this.restaurant.name = '';
                     this.restaurant.address = '';
                     this.restaurant.zipCode = '';
                     this.restaurant.imageUrl = '';
-                });alert("Restaurant ajouté");
+                })
         }
     }
 
