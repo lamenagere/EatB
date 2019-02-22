@@ -222,6 +222,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CommentsController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\KitchenTypesController.cs" />
     <Compile Include="Controllers\RatingsController.cs" />
     <Compile Include="Controllers\RestaurantsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
@@ -248,6 +249,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Entities\KitchenType.cs" />
     <Compile Include="Entities\Rating.cs" />
+    <Compile Include="Models\KitchenTypeModel.cs" />
     <Compile Include="Models\NewRestaurantModel.cs" />
     <Compile Include="Models\RatingModel.cs" />
     <Compile Include="Models\RestaurantModel.cs" />
