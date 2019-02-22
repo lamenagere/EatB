@@ -125,7 +125,6 @@ export default {
   props: ["resto"],
   data() {
     return {
-      resto: []
     };
   },
   components: {

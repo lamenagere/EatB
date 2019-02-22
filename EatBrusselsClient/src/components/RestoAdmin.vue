@@ -18,8 +18,8 @@
           <div>
             <i class="fas fa-trash-alt red"></i>
           </div>
-          <div>
-            <i class="fas fa-pen blue"></i>
+          <div><router-link :to=" resto.restaurantID + '/modifyresto' ">
+            <i class="fas fa-pen blue"></i> </router-link>
           </div>
         </div>
     </router-link>

@@ -7,6 +7,7 @@ import RouterList from './views/RouterList.vue'
 import RouterZip from './views/RouterZip.vue'
 import AddResto from './views/AddResto.vue'
 import Admin from './views/Admin.vue'
+import ModifyResto from './views/ModifyResto.vue'
 
 Vue.use(Router)
 
@@ -65,6 +66,13 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: Admin
+    },{
+      path: '/:id/modifyresto',
+      name: 'modifyresto',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: ModifyResto
     }
     
   ]
