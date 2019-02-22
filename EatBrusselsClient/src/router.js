@@ -6,6 +6,7 @@ import Restos from './views/Restos.vue'
 import RouterList from './views/RouterList.vue'
 import RouterZip from './views/RouterZip.vue'
 import AddResto from './views/AddResto.vue'
+import Admin from './views/Admin.vue'
 
 Vue.use(Router)
 
@@ -56,6 +57,14 @@ export default new Router({
       // this generates a separate chunk (about.[hash].js) for this route
       // which is lazy-loaded when the route is visited.
       component: AddResto
+    },
+    {
+      path: '/admin',
+      name: 'admin',
+      // route level code-splitting
+      // this generates a separate chunk (about.[hash].js) for this route
+      // which is lazy-loaded when the route is visited.
+      component: Admin
     }
     
   ]
