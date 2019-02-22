@@ -1,6 +1,6 @@
 <template>
     <div class="form-resto  container">
-        <h1>Ajouter un restaurant</h1>
+        <h1>Modifier votre restaurant</h1>
         <form class="form">
             <div>
             <label for="kitchenType" class="label-title">Type de cuisine </label>
