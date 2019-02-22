@@ -173,7 +173,10 @@ namespace EatBrussels.Controllers
             }
 
             // Ajoute le restaurant
-            var newRestaurant = db.Restaurants.Add(restaurant.ConvertModelToRestaurant());
+            db.Restaurants.Add(restaurant.ConvertModelToRestaurant());
+            db.SaveChanges();
+
+            var newRestaurant = db.Restaurants.FirstOrDefault(x => x.Name == restaurant.name);
 
             // Ajoute les images correspondantes
             if (restaurant.images != null && restaurant.images.Count() > 0)
