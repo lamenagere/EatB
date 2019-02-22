@@ -103,7 +103,7 @@ export default {
                     this.restaurant.address = '';
                     this.restaurant.zipCode = '';
                     this.restaurant.imageUrl = '';
-                })
+                });alert("Restaurant ajouté");
         }
     }
 

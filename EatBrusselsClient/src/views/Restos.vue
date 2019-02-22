@@ -6,16 +6,29 @@
         <div class="resto__bloc">
           <div class="resto__infos">
             <h2>{{resto.name}}</h2>
-            <button @click="suppr()" class="resto__suppr">Supprimer le restaurant</button>
-              <div class="address-rate"> <p class="tags">Cuisine {{resto.kitchenType}}</p>             <span class="stars">
-              <i class="fas fa-star" :class="{yellow: resto.averageRating >= 1} "></i>
-              <i class="fas fa-star" :class="{yellow: resto.averageRating >= 2} "></i>
-              <i class="fas fa-star" :class="{yellow: resto.averageRating >= 3} "></i>
-              <i class="fas fa-star" :class="{yellow: resto.averageRating >= 4} "></i>
-              <i class="fas fa-star" :class="{yellow: resto.averageRating >= 5}"></i>
-            </span></div><div class="flex-respo">
-            <p class="info-t"><span class="bold">Heures d'ouverture: </span>{{resto.openingHour}}-{{resto.closingHour}}</p><p class="info-t yo"><span class="bold">Adresse: </span>{{resto.address}}</p>
-          </div>
+            <button @click="suppr()" class="resto__suppr">Supprimer
+              <i class="fas fa-trash-alt"></i>
+            </button>
+            <div class="address-rate">
+              <p class="tags">Cuisine {{resto.kitchenType}}</p>
+              <span class="stars">
+                <i class="fas fa-star" :class="{yellow: resto.averageRating >= 1} "></i>
+                <i class="fas fa-star" :class="{yellow: resto.averageRating >= 2} "></i>
+                <i class="fas fa-star" :class="{yellow: resto.averageRating >= 3} "></i>
+                <i class="fas fa-star" :class="{yellow: resto.averageRating >= 4} "></i>
+                <i class="fas fa-star" :class="{yellow: resto.averageRating >= 5}"></i>
+              </span>
+            </div>
+            <div class="flex-respo">
+              <p class="info-t">
+                <span class="bold">Heures d'ouverture:</span>
+                {{resto.openingHour}}-{{resto.closingHour}}
+              </p>
+              <p class="info-t yo">
+                <span class="bold">Adresse:</span>
+                {{resto.address}}
+              </p>
+            </div>
           </div>
         </div>
         <div class="resto__menu" v-sticky="{ zIndex: 10, stickyTop: 0, disabled: false}">
@@ -134,13 +147,20 @@ export default {
     sticky: VueSticky
   },
   methods: {
-    suppr(){
-      axios.delete("http://labo-team4-bf.azurewebsites.net/api/restaurants/" + this.$route.params.id)
+    suppr() {
+      axios.delete(
+        "http://labo-team4-bf.azurewebsites.net/api/restaurants/" +
+          this.$route.params.id
+          
+      );alert("Restaurant supprimé");
     }
-  }, 
+  },
   created() {
     axios
-      .get("http://labo-team4-bf.azurewebsites.net/api/restaurants/" + this.$route.params.id)
+      .get(
+        "http://labo-team4-bf.azurewebsites.net/api/restaurants/" +
+          this.$route.params.id
+      )
       .then(response => {
         this.resto = response.data;
       });
@@ -149,16 +169,26 @@ export default {
 </script>
 
 <style scoped lang="scss">
-.info-t{
+button {
+  color: crimson;
+  border: 1px solid crimson;
+  background: white;
+  font-weight: bold;
+  border-radius: 5px;
+  padding: 5px 10px;
+  margin-top: 20px;
+  cursor: pointer;
+}
+.info-t {
   margin: 8px 0;
 }
-.yo{
+.yo {
   margin-bottom: 50px;
 }
-.bold{
+.bold {
   font-weight: bold;
 }
-.address-rate{
+.address-rate {
   display: flex;
   align-items: center;
   margin-bottom: 20px;
@@ -176,8 +206,8 @@ export default {
   width: 100%;
   overflow: hidden;
   position: relative;
-  &::before{
-    content: '';
+  &::before {
+    content: "";
     width: 100vw;
     height: 100%;
     background: black;
@@ -225,10 +255,6 @@ export default {
     position: relative;
     border-top: 2px rgb(218, 218, 218) solid;
     border-bottom: 2px rgb(218, 218, 218) solid;
-  }
-  &__suppr{
-    position: absolute;
-    right: 10px;
   }
 }
 .basket {
@@ -289,67 +315,66 @@ h4 {
   .resto__menu {
     max-width: 700px;
   }
-  .basket{
+  .basket {
     width: 180px;
   }
   .plat_container {
-  max-width: 100%;
-}
+    max-width: 100%;
+  }
 }
 @media screen and (max-width: 770px) {
   .img-head-resto {
     height: 300px;
   }
-.resto {
-  margin: 0 auto;
-  font-family: "Open Sans";
-  &__image img {
-    width: 400px;
-  }
-  &__bloc {
-    display: flex;
-  }
-  &__infos {
-    text-align: left;
-    & h2 {
-      font-size: 37px;
-      top: 260px;
+  .resto {
+    margin: 0 auto;
+    font-family: "Open Sans";
+    &__image img {
+      width: 400px;
     }
-    & .tags {
-      font-size: 1em;
+    &__bloc {
+      display: flex;
+    }
+    &__infos {
+      text-align: left;
+      & h2 {
+        font-size: 37px;
+        top: 260px;
+      }
+      & .tags {
+        font-size: 1em;
+      }
+    }
+    .info-t {
+      display: flex;
+      flex-direction: column;
+    }
+    .bold {
+      margin-bottom: 4px;
+    }
+    &__menu {
+      display: flex;
+      justify-content: space-between;
+      flex-direction: column-reverse;
+      position: relative;
+      border-top: 2px rgb(218, 218, 218) solid;
+      border-bottom: 2px rgb(218, 218, 218) solid;
     }
   }
-  .info-t{
-    display: flex;
+  .plat_container {
     flex-direction: column;
   }
-  .bold{
-    margin-bottom: 4px;
+  .plat {
+    width: 100%;
   }
-  &__menu {
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column-reverse;
+  .basket {
+    width: 100%;
     position: relative;
-    border-top: 2px rgb(218, 218, 218) solid;
-    border-bottom: 2px rgb(218, 218, 218) solid;
+    text-align: center;
+    margin-bottom: 10px;
   }
-}
-.plat_container {
-  flex-direction: column;
-}
-.plat{
-  width: 100%;
-}
-.basket {
-  width: 100%;
-  position: relative;
-  text-align: center;
-  margin-bottom: 10px;
-}
-.resto__list{
-  margin-top: 30px;
-}
-
+  .resto__list {
+    margin-top: 30px;
+  }
 }
 </style>
