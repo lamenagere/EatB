@@ -127,7 +127,7 @@ namespace EatBrussels.Controllers
         }
 
         // PUT: api/Restaurants/5
-        [Authorize(Roles ="Administrator")]
+        //[Authorize(Roles ="Administrator")]
         [ResponseType(typeof(void))]
         public async Task<IHttpActionResult> PutRestaurant(int id, Restaurant restaurant)
         {
@@ -163,7 +163,7 @@ namespace EatBrussels.Controllers
         }
 
         // POST: api/Restaurants
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         [ResponseType(typeof(RestaurantModel))]
         public async Task<IHttpActionResult> PostRestaurant(NewRestaurantModel restaurant)
         {
@@ -199,7 +199,7 @@ namespace EatBrussels.Controllers
         }
 
         // DELETE: api/Restaurants/5
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         [ResponseType(typeof(Restaurant))]
         public async Task<IHttpActionResult> DeleteRestaurant(int id)
         {
