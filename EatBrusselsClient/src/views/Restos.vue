@@ -6,6 +6,7 @@
         <div class="resto__bloc">
           <div class="resto__infos">
             <h2>{{resto.name}}</h2>
+            <button @click="suppr()" class="resto__suppr">Supprimer le restaurant</button>
               <div class="address-rate"> <p class="tags">Cuisine {{resto.kitchenType}}</p>             <span class="stars">
               <i class="fas fa-star" :class="{yellow: resto.averageRating >= 1} "></i>
               <i class="fas fa-star" :class="{yellow: resto.averageRating >= 2} "></i>
@@ -133,9 +134,14 @@ export default {
   directives: {
     sticky: VueSticky
   },
+  methods: {
+    suppr(){
+      axios.delete("http://labo-team4-bf.azurewebsites.net/api/restaurants/" + this.$route.params.id)
+    }
+  }, 
   created() {
     axios
-      .get("http://localhost:63980/api/restaurants/" + this.$route.params.id)
+      .get("http://labo-team4-bf.azurewebsites.net/api/restaurants/" + this.$route.params.id)
       .then(response => {
         this.resto = response.data;
       });
@@ -220,6 +226,10 @@ export default {
     position: relative;
     border-top: 2px rgb(218, 218, 218) solid;
     border-bottom: 2px rgb(218, 218, 218) solid;
+  }
+  &__suppr{
+    position: absolute;
+    right: 10px;
   }
 }
 .basket {
